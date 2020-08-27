@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^docs$
+^inst/tutorials/subset-exercises/subset-exercises\.Rmd$
+^inst/tutorials/chaining-exercises/chaining-exercises\.Rmd$
+^inst/tutorials/variable-exercises/variable-exercises\.Rmd$
+^inst/tutorials/pivoting-exercises/pivoting-exercises\.Rmd$
+^inst/tutorials/Nesting-exercises/Nesting-exercises\.Rmd$
+^inst/tutorials/Nesting-manipulation-exercises/Nesting-manipulation-exercises\.Rmd$
+^inst/tutorials/Nesting-analysis-exercises/Nesting-analysis-exercises\.Rmd$

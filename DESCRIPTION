@@ -1,0 +1,20 @@
+Package: tidyquintro
+Type: Package
+Title: Quick intro to Tidyverse
+Version: 0.1.0
+Authors@R: person("Athanasia Mo", "Mowinckel", 
+                    email = "a.m.mowinckel@psykologi.uio.no", 
+                    role = c("aut", "cre"),
+                    comment = c(ORCID = "0000-0002-5756-0223"))
+Description: A 4 hour workshop with quick introduction to tidyverse. 
+License: CC BY 4.0
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    tidyverse,
+    broom
+Imports: 
+    learnr
+Suggests: 
+    knitr,
+    roxygen2
