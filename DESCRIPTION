@@ -12,9 +12,13 @@ Encoding: UTF-8
 LazyData: true
 Depends: 
     tidyverse,
-    broom
-Imports: 
-    learnr
+    broom,
+    palmerpenguins
 Suggests: 
     knitr,
-    roxygen2
+    roxygen2,
+    usethis
+RoxygenNote: 7.1.1
+Imports: 
+    gradethis,
+    learnr

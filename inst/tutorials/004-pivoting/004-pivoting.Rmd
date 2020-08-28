@@ -1,5 +1,5 @@
 ---
-title: "Analyses in nested data exercises"
+title: "Pivoting data - long and wide formats"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---

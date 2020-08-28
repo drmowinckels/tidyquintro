@@ -1,5 +1,5 @@
 ---
-title: "Pivoting exercises"
+title: "Grouping data sets"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---

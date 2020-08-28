@@ -1,5 +1,5 @@
 ---
-title: "Subsetting exercises"
+title: "Altering or adding variables to data sets"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---

@@ -4,15 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-library(tidyquintro)
-```
+
 
 # tidyquintro
 
@@ -28,7 +20,8 @@ A 4 hour workshop with quick introduction to [tidyverse](https://www.tidyverse.o
 This package contains materials that are necessary for the workshop. 
 You can install tidyquintro from [github]() with
 
-```{r, eval = FALSE}
+
+```r
 # install.packages("remotes")
 remotes::install_github("Athanasiamo/tidyquintro")
 ```
@@ -36,12 +29,23 @@ remotes::install_github("Athanasiamo/tidyquintro")
 This will also install the packages that the tutorial will cover.
 Additionally, the exercises connected to each of the topics will also be accessible via the learnr-package.
 
-```{r, eval=FALSE}
+
+```r
 library(tidyquintro)
 ```
 
-```{r}
+
+```r
 learnr::available_tutorials("tidyquintro")
+#> Available tutorials:
+#> * tidyquintro
+#>   - 001-filtering        : "Subsetting data"
+#>   - 002-chaining         : "Chaining data - the pipe"
+#>   - 003-mutating         : "Altering or adding variables to data sets"
+#>   - 004-pivoting         : "Pivoting data - long and wide formats"
+#>   - 006-grouping         : "Grouping data sets"
+#>   - 007-nesting          : "Working with nested data sets"
+#>   - 008-nesting-analyses : "Running analyses in nested data sets"
 ```
 
 ## Timeline

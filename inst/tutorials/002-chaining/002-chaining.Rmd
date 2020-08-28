@@ -1,5 +1,5 @@
 ---
-title: "Working with nested data exercises"
+title: "Chaining data - the pipe"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
