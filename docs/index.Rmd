@@ -1,0 +1,14 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Quick intro to tidyverse presentations
+
+- [Introduction to tidyverse](tidyverse-introduction/tidyverse-introduction.html)  
+- [Tidy data wrangling](tidy-wrangling/tidy-wrangling.html)  
+- [Tidy data reshaping & summaries](tidy-summaries/tidy-summaries.html)  
+
