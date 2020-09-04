@@ -1,0 +1,30 @@
+---
+title: "Introduction to Tidyverse"
+author: "Athanasia Monika Mowinckel"
+date: "Sept. 17^th^ 2020"
+output:
+  xaringan::moon_reader:
+    css: [lcbc-uio.css, lcbc-uio-fonts.css, default]
+    lib_dir: libs
+    nature:
+      titleSlideClass: [middle, right]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false 
+      ratio: "16:9"
+---
+
+layout: true
+    
+<div class="my-sidebar"></div> 
+
+---
+
+### Start editing after this
+
+```{r setup, include=FALSE}
+# Here you can place global options for the entire document.
+# Mostly used for knitr settings, but can also load data etc.
+# Whatever happens here will not show in the presentation.
+knitr::opts_chunk$set(echo = TRUE)
+```
