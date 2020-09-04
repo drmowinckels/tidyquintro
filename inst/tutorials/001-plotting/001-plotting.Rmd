@@ -1,5 +1,5 @@
 ---
-title: "Grouping data sets"
+title: "Plotting data"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---

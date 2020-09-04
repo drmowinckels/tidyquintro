@@ -1,5 +1,5 @@
 ---
-title: "Running analyses in nested data sets"
+title: "Summarising data"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
