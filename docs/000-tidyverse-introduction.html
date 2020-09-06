@@ -6,6 +6,7 @@
     <meta name="author" content="Athanasia Monika Mowinckel" />
     <script src="libs/header-attrs-2.3/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-extra-styles-0.2.3/xaringanExtra-extra-styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="lcbc-uio.css" type="text/css" />
     <link rel="stylesheet" href="lcbc-uio-fonts.css" type="text/css" />
   </head>
@@ -25,7 +26,7 @@ layout: true
 &lt;div class="my-sidebar"&gt;&lt;/div&gt; 
 
 ---
- 
+
 
 
 ## Timeline
@@ -114,122 +115,36 @@ background-position: 37% 20%, 90% 20%
 
 ## What's so special about them?
 
-- made to work with data sets (tibbles / data.frames)  
+- **made to work with data sets (tibbles / data.frames)**  
     - geared towards data-scientists and folks working with rectangular data   
     
 --
 
-- made to work together  
+- **made to work together**  
     - naming and argument conventions  
 
 --
 
-- use function names similar to spoken language  
+- **use function names similar to spoken language**  
     - verbs and adverb function names  
 
 --
 
-- arguments can be chained (piped) together  
+- **arguments can be chained (piped) together**  
     - avoids saving intermediary objects
+    - input always as first argument
 
 --
 
-- packages are actively developed and maintained
-    - functions will not abruptly or without warning and careful thought change behaviour
+- **packages are actively developed and maintained by RStudio**
+    - functions will not abruptly or without warning and careful thought change behaviour  
 
 
 ---
-class: dark, middle, center
-background-image: url(img/ggplot2.png), url(img/dplyr.png), url(img/pipe.png)
-background-size: 15%
-background-position: 32% 95%, 50% 95%, 68% 95%
-
-# Part 1 
-
-## Tidy data wrangling
-
----
-class: middle
-
-## Tidy data wrangling 
-
-  - plotting data with [ggplot2](https://ggplot2.tidyverse.org/) (~25 min) 
-  - sub-setting data with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
-  - chaining commands with the pipe `%&gt;%` (~10 min)  
-  - adding and altering variables with [dplyr](https://dplyr.tidyverse.org/)  (~25 min)  
-  
----
-class: dark, middle, center
-background-image: url(img/ggplot2.png)
-background-size: 15%
-background-position: 50% 95%
-
-## ggplot2
-### grammar of graphics
-
----
-class: inverse, middle, center
-
-## Go to RStudio 
-### live demo
-
----
-class: dark, middle, center
-background-image: url(img/dplyr.png)
-background-size: 15% 
-background-position: 50% 95%
-
-## dplyr
-### data subsetting
-
----
-class: inverse, middle, center
-
-## Go to RStudio
-### live demo
-
----
-class: dark, middle, center
-background-image: url(img/pipe.png)
-background-size: 15% 
-background-position: 50% 95%
-
-## magrittr
-### the pipe - chaining commands
-
----
-class: inverse, middle, center
-
-## Go to RStudio
-### live demo
-
----
-class: dark, middle, center
-background-image: url(img/dplyr.png)
-background-size: 15% 
-background-position: 50% 95%
-
-## dplyr
-### data wrangling / manipulation
-
----
-class: inverse, middle, center
-
-## Go to RStudio
-### live demo
-
-
----
-class: dark, middle, center
-
-# End or part 1
-## 30 minute lunch break
-
----
-class: dark, middle, center
+class: dark, center
 background-image: url(img/tidyr.png), url(img/dplyr.png), url(img/purrr.png)
 background-size: 15%
-background-position: 32% 95%, 50% 95%, 68% 95%
+background-position: 32% 65%, 50% 65%, 68% 65%
 
 # Part 2 
 
@@ -244,10 +159,10 @@ class: middle
   - working with nested data with [purrr](https://purrr.tidyverse.org/) (~25 min) 
   
 ---
-class: dark, middle, center
+class: dark, center
 background-image: url(img/tidyr.png)
 background-size: 15% 
-background-position: 50% 95%
+background-position: 50% 65%
 
 ## tidyr
 ### pivoting / altering data shape
@@ -259,10 +174,10 @@ class: inverse, middle, center
 ### live demo
 
 ---
-class: dark, middle, center
+class: dark, center
 background-image: url(img/dplyr.png), url(img/tidyr.png)
 background-size: 15% 
-background-position: 41% 95%, 59% 95% 
+background-position: 41% 65%, 59% 65% 
 
 ## dplyr + tidyr
 ### data summaries
@@ -274,10 +189,10 @@ class: inverse, middle, center
 ### live demo
 
 ---
-class: dark, middle, center
+class: dark, center
 background-image: url(img/tidyr.png)
 background-size: 15% 
-background-position: 50% 95%
+background-position: 50% 65%
 
 ## tidyr
 ### data nesting

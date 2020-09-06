@@ -1,0 +1,106 @@
+---
+title: "Tidy data reshaping & summaries"
+author: "Athanasia Monika Mowinckel"
+date: "Sept. 15^th^ 2020"
+output:
+  xaringan::moon_reader:
+    css: [lcbc-uio.css, lcbc-uio-fonts.css, default]
+    lib_dir: libs
+    nature:
+      titleSlideClass: [middle, right]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false 
+      ratio: "16:9"
+---
+layout: true
+    
+<div class="my-sidebar"></div> 
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      error = FALSE, 
+                      warning = FALSE)
+
+# These are the defaults
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+
+library(knitr)
+library(tidyquintro)
+```
+
+class: dark, center
+background-image: url(img/tidyr.png), url(img/dplyr.png), url(img/purrr.png)
+background-size: 15%
+background-position: 32% 65%, 50% 65%, 68% 65%
+
+# Part 2 
+
+## Tidy data reshaping & summaries
+
+---
+## Timeline
+
+- **Tidy data reshaping & summaries** - avoiding loops (~ 1.5 hours)   
+  - pivoting data with [tidyr](https://tidyr.tidyverse.org/) (~25 min) 
+  - nesting data with [tidyr](https://tidyr.tidyverse.org/) (~25 min)  
+  - working with nested data with [purrr](https://purrr.tidyverse.org/) (~25 min) 
+
+---
+class: middle
+
+## Tidy data reshaping & summaries
+  - pivoting data with [tidyr](https://tidyr.tidyverse.org/) (~25 min) 
+  - nesting data with [tidyr](https://tidyr.tidyverse.org/) (~25 min)  
+  - working with nested data using [purrr](https://purrr.tidyverse.org/) (~25 min) 
+  
+---
+class: dark, center
+background-image: url(img/tidyr.png)
+background-size: 15% 
+background-position: 50% 65%
+
+## tidyr
+### pivoting / altering data shape
+
+---
+class: inverse, middle, center
+
+## Go to RStudio
+### live demo
+
+---
+class: dark, center
+background-image: url(img/dplyr.png), url(img/tidyr.png)
+background-size: 15% 
+background-position: 41% 65%, 59% 65% 
+
+## dplyr + tidyr
+### data summaries
+
+---
+class: inverse, middle, center
+
+## Go to RStudio
+### live demo
+
+---
+class: dark, center
+background-image: url(img/tidyr.png)
+background-size: 15% 
+background-position: 50% 65%
+
+## tidyr
+### data nesting
+
+---
+class: inverse, middle, center
+
+## Go to RStudio
+### live demo

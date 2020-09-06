@@ -1,0 +1,394 @@
+---
+title: "Tidy data wrangling"
+author: "Athanasia Monika Mowinckel"
+date: "Sept. 15^th^ 2020"
+output:
+  xaringan::moon_reader:
+    css: [lcbc-uio.css, lcbc-uio-fonts.css, default]
+    lib_dir: libs
+    nature:
+      titleSlideClass: [middle, right]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false 
+      ratio: "16:9"
+---
+
+
+layout: true
+    
+<div class="my-sidebar"></div> 
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      error = FALSE, 
+                      warning = FALSE)
+
+# These are the defaults
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+
+library(knitr)
+library(tidyquintro)
+```
+
+
+class: dark, center
+background-image: url(img/ggplot2.png), url(img/dplyr.png), url(img/pipe.png)
+background-size: 15%
+background-position: 32% 65%, 50% 65%, 68% 65%
+
+# Part 1 
+
+## Tidy data wrangling
+
+---
+
+## Timeline
+
+- **Tidy data wrangling** - with translations to base-R (~ 2 hours) 
+  - plotting data with [ggplot2](https://ggplot2.tidyverse.org/) (~25 min) 
+  - sub-setting data with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
+  - chaining commands with the pipe `%>%` (~10 min)  
+  - adding and altering variables with [dplyr](https://dplyr.tidyverse.org/)  (~25 min)  
+
+
+
+---
+class: middle
+
+## Tidy data wrangling 
+
+  - plotting data with [ggplot2](https://ggplot2.tidyverse.org/) (~25 min) 
+  - sub-setting data with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
+  - chaining commands with the pipe `%>%` (~10 min)  
+  - adding and altering variables with [dplyr](https://dplyr.tidyverse.org/)  (~25 min)  
+  
+---
+class: dark, center
+background-image: url(img/ggplot2.png)
+background-size: 15%
+background-position: 50% 65%
+
+## ggplot2
+### grammar of graphics
+
+---
+
+.pull-left[
+```{r "penguin-plot1"}
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm)) +
+  geom_histogram()
+```
+]
+
+--
+
+.pull-right[
+```{r "penguin-plot1-base"}
+hist(penguins$bill_length_mm)
+```
+]
+
+???
+ggplot2 is one of three main plotting systems in R. Base-R & lattice. 
+It's based on a principle where given a dataset you can map variables to aesthetics in the plot,
+and add different types of geometries to the plot.
+
+---
+
+### ggplot2 setting
+
+.pull-left[
+```{r "penguin-plot2", eval = FALSE}
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm)) +
+  geom_histogram(
+    fill = "forestgreen" #<<
+  )
+```
+]
+
+.pull-right[
+```{r "penguin-plot2-rend", echo = FALSE, ref.label="penguin-plot2"}
+```
+]
+
+---
+
+### ggplot2 mapping
+
+.pull-left[
+```{r "penguin-plot3", eval = FALSE}
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm,
+                     fill = species)) + #<<
+  geom_histogram( )
+```
+]
+
+.pull-right[
+```{r "penguin-plot3-rend", echo = FALSE, ref.label="penguin-plot3"}
+```
+]
+
+---
+class: inverse, middle, center
+
+## Go to RStudio 
+### live demo
+
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot5", eval = FALSE}
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           fill = species)) +
+  geom_histogram(alpha = .9, #<<
+                 colour = "white")  #<<
+```
+]
+
+.pull-right[
+```{r "penguin-plot5-rend", echo = FALSE, ref.label="penguin-plot5"}
+```
+]
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot4", eval = FALSE}
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           fill = species)) +
+  geom_histogram(alpha = .8, #<<
+                 colour = "white") +
+  scale_fill_viridis_d() #<<
+```
+]
+
+.pull-right[
+```{r "penguin-plot4-rend", echo = FALSE, ref.label="penguin-plot4"}
+```
+]
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot6", eval = FALSE}
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           fill = species)) +
+  geom_histogram(alpha = .8,
+                 colour = "white",
+                 position = "dodge") + #<<
+  scale_fill_viridis_d()
+```
+]
+
+.pull-right[
+```{r "penguin-plot6-rend", echo = FALSE, ref.label="penguin-plot6"}
+```
+]
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot7", eval = FALSE}
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           fill = species)) +
+  geom_density(
+    alpha = .8, #<<
+    colour = "white",
+    position = "dodge") +
+  scale_fill_viridis_d()
+```
+]
+
+.pull-right[
+```{r "penguin-plot7-rend", echo = FALSE, ref.label="penguin-plot7"}
+```
+]
+
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot8", eval = FALSE}
+ggplot(penguins,
+       aes(y = bill_length_mm,#<<
+           fill = species)) +
+  geom_density(
+    alpha = .8, 
+    colour = "white",
+    position = "dodge") +
+  scale_fill_viridis_d()
+```
+]
+
+.pull-right[
+```{r "penguin-plot8-rend", echo = FALSE, ref.label="penguin-plot8"}
+```
+]
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot9", eval = FALSE}
+ggplot(penguins,
+       aes(y = bill_length_mm,
+           x = bill_depth_mm, 
+           colour = species)) +  #<<
+  geom_point() + #<<
+  scale_colour_viridis_d() #<<
+```
+]
+
+.pull-right[
+```{r "penguin-plot9-rend", echo = FALSE, ref.label="penguin-plot9"}
+```
+]
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot10", eval = FALSE}
+ggplot(penguins,
+       aes(y = bill_length_mm,
+           x = bill_depth_mm, 
+           colour = species)) +  
+  geom_point() + 
+  geom_line() + #<<
+  scale_colour_viridis_d()
+```
+]
+
+.pull-right[
+```{r "penguin-plot10-rend", echo = FALSE, ref.label="penguin-plot10"}
+```
+]
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot11", eval = FALSE}
+ggplot(penguins,
+       aes(y = bill_length_mm,
+           x = bill_depth_mm, 
+           colour = species)) +  
+  geom_point() + 
+  geom_smooth(method = "lm") + #<<
+  scale_colour_viridis_d()
+```
+]
+
+.pull-right[
+```{r "penguin-plot11-rend", echo = FALSE, ref.label="penguin-plot11"}
+```
+]
+
+---
+
+### ggplot2
+
+.pull-left[
+```{r "penguin-plot12", eval = FALSE}
+ggplot(penguins,
+       aes(y = bill_length_mm,
+           x = bill_depth_mm)) +  
+  geom_point(aes(colour = species)) + 
+  geom_smooth(aes(colour = species),
+              method = "lm") + #<<
+  geom_smooth(method = "lm") + #<<
+  scale_colour_viridis_d()
+```
+]
+
+.pull-right[
+```{r "penguin-plot12-rend", echo = FALSE, ref.label="penguin-plot12"}
+```
+]
+
+---
+class: inverse, middle, center
+
+## Go to exercises 
+### learnr::run_tutorial("001-plotting", "tidyquintro") 
+
+---
+class: dark, middle, center
+background-image: url(img/dplyr.png)
+background-size: 15% 
+background-position: 50% 95%
+
+## dplyr
+### data subsetting
+
+---
+class: inverse, middle, center
+
+## Go to RStudio
+### live demo
+
+---
+class: dark, center
+background-image: url(img/pipe.png)
+background-size: 15% 
+background-position: 50% 65%
+
+## magrittr
+### the pipe - chaining commands
+
+---
+class: inverse, middle, center
+
+## Go to RStudio
+### live demo
+
+---
+class: dark, center
+background-image: url(img/dplyr.png)
+background-size: 15% 
+background-position: 50% 65%
+
+## dplyr
+### data wrangling / manipulation
+
+---
+class: inverse, middle, center
+
+## Go to RStudio
+### live demo
+
+
+---
+class: dark, middle, center
+
+# End or part 1
+## 30 minute lunch break
+

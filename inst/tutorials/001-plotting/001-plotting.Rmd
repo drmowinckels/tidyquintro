@@ -1,74 +1,224 @@
 ---
 title: "Plotting data"
-output: learnr::tutorial
+output: 
+  learnr::tutorial:
+   # css: css/uio.css
+    progressive: true # third level heading (###) is progressively revealed
+    allow_skip: true # allows skipping exercises
 runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
+
+library(tidyquintro)
 library(learnr)
-knitr::opts_chunk$set(echo = FALSE)
-```
+library(gradethis)
 
+knitr::opts_chunk$set(echo = FALSE,
+                 exercise.warn_invisible = FALSE)
 
-## Topic 1
-
-### Exercise 
-
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
-
-Write the R code required to add two plus two:
-
-```{r two-plus-two, exercise=TRUE}
+# enable code checking
+tutorial_options(exercise.checker = grade_learnr)
 
 ```
 
-### Exercise with Code
+## Introduction to the excercise tool
 
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+This is a tutorial page, made specifically for this webinar using the [learnr]() package. 
+Here there are exercises you can work through to help you understand the topics we have covered. 
+Each exercise is in a small R-console within the tutorial. 
+These function as any R console, and you can interact with is as any R-session. 
+The R consoles have all of the tidyverse and the penguins dataset preloaded for you.
 
-Now write a function that adds any two numbers and then call it:
+You can try that below, just to get acquainted with it. 
+For instance, try looking at the penguins dataset by typing `penguins`, or taking the mean of any column by typing `mean(penguins$flipper_length_mm)`
 
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
+```{r test1, exercise = TRUE, exercise.lines = 3}
+# Type in any command you like, and press "run". 
+# continue to the next section when you like
 ```
 
-## Topic 2
 
-### Exercise with Hint
+## Plot basics
 
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
+Make a scatter plot of the `penguins` data set with bill length on the x-axis and bill depth on the y.
+```{r plot1, exercise = TRUE, exercise.lines = 3}
+ggplot(data = __) +
+  geom_point(mapping = aes(x = __,
+                           y = __))
 ```
 
-```{r print-limit-hint}
-head(mtcars)
+```{r plot1-solution}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = bill_length_mm,
+                           y = bill_depth_mm))
 ```
 
-### Quiz
+```{r plot1-check}
+grade_code(
+  correct = random_praise(),
+  incorrect = random_encouragement()
+)
+```
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+```{r plot1-hint-1}
+The name of the data object is `penguins`
+```
 
-Some questions to verify that you understand the purposes of various base and recommended R packages:
+```{r plot1-hint-2}
+If you forgot the column names, try looking at the data by typing the 
+data object name `penguing` in the console and select "run".
+```
+
+### Adding colour
+
+Now let us add colour by mapping colour to the `species` column.
+```{r plot2, exercise = TRUE, exercise.lines = 4}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = bill_length_mm,
+                           y = bill_depth_mm,
+                           colour = ___))
+```
+
+```{r plot2-solution}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = bill_length_mm,
+                           y = bill_depth_mm,
+                           colour = species))
+```
+
+```{r plot2-check}
+grade_code(
+  correct = random_praise(),
+  incorrect = random_encouragement()
+)
+```
+
+```{r plot2-hint-1}
+You can set either the `color` or `colour` option.
+```
+
+```{r plot2-hint-2}
+Since the colour is being based on values in a column of the data set, 
+the `colour` argument must be placed within the `aes()` function.
+```
+
+### Changing colour
+
+Now that the colour is based on species, we'd like to alter these colours to something more exciting than the default ggplot2 colours. 
+Here, let's try to add the `viridis` colour palette for discrete (d) values.
+```{r plot3, exercise = TRUE, exercise.lines = 5}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = bill_length_mm,
+                           y = bill_depth_mm,
+                           colour = species)) +
+  scale_colour____d()
+```
+
+```{r plot3-solution}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = bill_length_mm,
+                           y = bill_depth_mm,
+                           colour = species)) +
+  scale_colour_viridis_d()
+```
+
+```{r plot3-check}
+grade_code(
+  correct = random_praise(),
+  incorrect = random_encouragement()
+)
+```
+
+```{r plot3-hint-1}
+When applying colour or fill alterations, make sure you apply the correct type of aesthetic scale for your use (i.e colour and fill are two different things, also for scales)
+```
+
+```{r plot3-hint-2}
+you are looking for the `scale_colour_viridis_d()` function
+```
+
+### Changing the general appearence
+
+The grey background, and dark grey font is a dead give-away that the plot is a ggplot.
+Most of us like to adapt the general appearance of plots, either to our own personal taste or to adhere to some journals' requirements. 
+In ggplot, this is handled by `themes`. 
+There are many built-in different themes within ggplot it self, and there are numerous packages with extra themes, and tutorials on how to adapt your own theme.
+Here, try out different themes and see what they look like. 
+
+
+```{r plot4, exercise = TRUE, exercise.lines = 6}
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = bill_length_mm,
+                           y = bill_depth_mm,
+                           colour = species)) +
+  scale_colour_viridis_d() + 
+  theme__()
+```
+
+
+```{r plot4-hint-1}
+All the themes start with `theme_`, explore them by typing that then "tab" to see all possible options.
+```
+
+## Plaing around with ggplot
+
+### Changing the general appearence
+
+The grey background, and dark grey font is a dead give-away that the plot is a ggplot.
+Most of us like to adapt the general appearance of plots, either to our own personal taste or to adhere to some journals' requirements. 
+In ggplot, this is handled by `themes`. 
+There are many built-in different themes within ggplot it self, and there are numerous packages with extra themes, and tutorials on how to adapt your own theme.
+Here, try out different themes and see what they look like. 
+
+
+```{r plot5, exercise = TRUE, exercise.lines = 6}
+ggplot(data = penguins) +
+  geom___()
+```
+
+
+```{r plot5-hint-1}
+Try different geoms! 
+Some geoms have different aesthetics, so just play around.
+```
+
+
+```{r plot5-hint-2}
+Try different scales! 
+  There are scales also for x and y, and other aesthetics. See what fun things you can do.
+```
+
+
+```{r plot5-hint-3}
+Maybe you want to change the labels?
+  Try adding `labs()` as a layer""
+```
+
+## Quiz 
 
 ```{r quiz}
 quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
+  question("Which of the R packages listed below are also used to create plots?",
     answer("lattice", correct = TRUE),
     answer("tools"),
     answer("stats"),
     answer("grid", correct = TRUE)
-  )
+  ),
+  
+  question("When you want to fix a ggplot aesthetic to a single value, you do this by...",
+    answer("'mapping' values using the `aes()` function"),
+    answer("adapting extra plot appearence through themes and scales"),
+    answer("'setting' values outside the `aes()` function", correct = TRUE)),
+  
+  question("When you want to make a ggplot aesthetic to a vary based on columns in the data set, you do this by...",
+    answer("'mapping' values using the `aes()` function", correct = TRUE),
+    answer("adapting extra plot appearence through themes and scales"),
+    answer("'setting' values outside the `aes()` function")),
+  
+    question("When you want to alter  the 'look' a ggplot, you do this by...",
+    answer("'mapping' values using the `aes()` function"),
+    answer("adapting extra plot appearence through themes and scales"),
+    answer("'setting' values outside the `aes()` function", correct = TRUE))
 )
 ```
