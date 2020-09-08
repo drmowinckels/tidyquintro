@@ -161,20 +161,17 @@ ggplot(data = penguins) +
 All the themes start with `theme_`, explore them by typing that then "tab" to see all possible options.
 ```
 
-## Plaing around with ggplot
-
-### Changing the general appearence
-
-The grey background, and dark grey font is a dead give-away that the plot is a ggplot.
-Most of us like to adapt the general appearance of plots, either to our own personal taste or to adhere to some journals' requirements. 
-In ggplot, this is handled by `themes`. 
-There are many built-in different themes within ggplot it self, and there are numerous packages with extra themes, and tutorials on how to adapt your own theme.
-Here, try out different themes and see what they look like. 
+## Playing around with ggplot
+Have a go at just playing around with the ggplot functions and see what different types of plots you can make.
+Try different geoms, themes, scales etc. 
+There are also a lot of other aesthetics you can set, like `alpha`, `size`, etc. 
+Different geoms can have somewhat different aesthetics you can set, explore them!
 
 
 ```{r plot5, exercise = TRUE, exercise.lines = 6}
 ggplot(data = penguins) +
-  geom___()
+  geom__() + 
+  theme__()
 ```
 
 

@@ -3,6 +3,7 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^docs$
+^data-raw$
 ^inst/tutorials/.*\.html$
 ^_pkgdown\.yml$
 ^pkgdown$

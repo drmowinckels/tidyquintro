@@ -56,7 +56,7 @@ library(tidyquintro)
 
 - **Tidy data reshaping & summaries** - avoiding loops (~ 1.5 hours)   
   - pivoting data with [tidyr](https://tidyr.tidyverse.org/) (~25 min) 
-  - nesting data with [tidyr](https://tidyr.tidyverse.org/) (~25 min)  
+  - grouped summaries with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
   - working with nested data using [purrr](https://purrr.tidyverse.org/) (~25 min) 
 
 --
@@ -145,4 +145,5 @@ background-position: 37% 20%, 90% 20%
 
 - **packages are actively developed and maintained by RStudio**
     - functions will not abruptly or without warning and careful thought change behaviour  
+
 

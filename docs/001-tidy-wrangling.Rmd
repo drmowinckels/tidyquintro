@@ -47,63 +47,34 @@ background-position: 32% 65%, 50% 65%, 68% 65%
 
 ## Tidy data wrangling
 
----
-
-## Timeline
-
-- **Tidy data wrangling** - with translations to base-R (~ 2 hours) 
-  - plotting data with [ggplot2](https://ggplot2.tidyverse.org/) (~25 min) 
-  - sub-setting data with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
-  - chaining commands with the pipe `%>%` (~10 min)  
-  - adding and altering variables with [dplyr](https://dplyr.tidyverse.org/)  (~25 min)  
-
-
 
 ---
-class: middle
+class: middle, inverse
 
 ## Tidy data wrangling 
+<ul style="color: white;">
+  - **plotting data with [ggplot2](https://ggplot2.tidyverse.org/) (~25 min)** 
+  - **sub-setting data with [dplyr](https://dplyr.tidyverse.org/) (~25 min)**  
+  - **chaining commands with the pipe `%>%` (~10 min)**  
+  - **adding and altering variables with [dplyr](https://dplyr.tidyverse.org/) (~25 min)**  
 
-  - plotting data with [ggplot2](https://ggplot2.tidyverse.org/) (~25 min) 
-  - sub-setting data with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
-  - chaining commands with the pipe `%>%` (~10 min)  
-  - adding and altering variables with [dplyr](https://dplyr.tidyverse.org/)  (~25 min)  
-  
+
 ---
-class: dark, center
 background-image: url(img/ggplot2.png)
-background-size: 15%
-background-position: 50% 65%
+background-size: 8%
+background-position: 95% 5%
 
-## ggplot2
-### grammar of graphics
+# ggplot2
+## grammar of graphics
 
----
 
-.pull-left[
-```{r "penguin-plot1"}
-ggplot(data = penguins,
-       mapping = aes(x = bill_length_mm)) +
-  geom_histogram()
-```
-]
 
---
-
-.pull-right[
-```{r "penguin-plot1-base"}
-hist(penguins$bill_length_mm)
-```
-]
-
-???
-ggplot2 is one of three main plotting systems in R. Base-R & lattice. 
-It's based on a principle where given a dataset you can map variables to aesthetics in the plot,
-and add different types of geometries to the plot.
 
 ---
-
-### ggplot2 setting
+background-image: url(img/ggplot2.png)
+background-size: 8%
+background-position: 95% 5%
+## ggplot2 setting
 
 .pull-left[
 ```{r "penguin-plot2", eval = FALSE}
@@ -121,8 +92,10 @@ ggplot(data = penguins,
 ]
 
 ---
-
-### ggplot2 mapping
+background-image: url(img/ggplot2.png)
+background-size: 8%
+background-position: 95% 5%
+## ggplot2 mapping
 
 .pull-left[
 ```{r "penguin-plot3", eval = FALSE}
@@ -147,8 +120,6 @@ class: inverse, middle, center
 
 ---
 
-### ggplot2
-
 .pull-left[
 ```{r "penguin-plot5", eval = FALSE}
 ggplot(penguins,
@@ -165,8 +136,6 @@ ggplot(penguins,
 ]
 
 ---
-
-### ggplot2
 
 .pull-left[
 ```{r "penguin-plot4", eval = FALSE}
@@ -186,8 +155,6 @@ ggplot(penguins,
 
 ---
 
-### ggplot2
-
 .pull-left[
 ```{r "penguin-plot6", eval = FALSE}
 ggplot(penguins,
@@ -206,8 +173,6 @@ ggplot(penguins,
 ]
 
 ---
-
-### ggplot2
 
 .pull-left[
 ```{r "penguin-plot7", eval = FALSE}
@@ -230,8 +195,6 @@ ggplot(penguins,
 
 ---
 
-### ggplot2
-
 .pull-left[
 ```{r "penguin-plot8", eval = FALSE}
 ggplot(penguins,
@@ -252,8 +215,6 @@ ggplot(penguins,
 
 ---
 
-### ggplot2
-
 .pull-left[
 ```{r "penguin-plot9", eval = FALSE}
 ggplot(penguins,
@@ -271,8 +232,6 @@ ggplot(penguins,
 ]
 
 ---
-
-### ggplot2
 
 .pull-left[
 ```{r "penguin-plot10", eval = FALSE}
@@ -293,8 +252,6 @@ ggplot(penguins,
 
 ---
 
-### ggplot2
-
 .pull-left[
 ```{r "penguin-plot11", eval = FALSE}
 ggplot(penguins,
@@ -314,8 +271,6 @@ ggplot(penguins,
 
 ---
 
-### ggplot2
-
 .pull-left[
 ```{r "penguin-plot12", eval = FALSE}
 ggplot(penguins,
@@ -330,15 +285,15 @@ ggplot(penguins,
 ]
 
 .pull-right[
-```{r "penguin-plot12-rend", echo = FALSE, ref.label="penguin-plot12"}
+```{r "penguin-plot12-rend", echo=FALSE, message=FALSE, warning=FALSE, ref.label="penguin-plot12"}
 ```
 ]
 
 ---
 class: inverse, middle, center
 
-## Go to exercises 
-### learnr::run_tutorial("001-plotting", "tidyquintro") 
+## Go to plotting exercises 
+### `learnr::run_tutorial("001-plotting", "tidyquintro")` 
 
 ---
 class: dark, middle, center
@@ -346,14 +301,217 @@ background-image: url(img/dplyr.png)
 background-size: 15% 
 background-position: 50% 95%
 
-## dplyr
-### data subsetting
+# dplyr
+## data subsetting
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+# dplyr
+## grammar of data manipulation
+
+provides a consistent set of verbs that help you solve the most common data manipulation challenges:
+
+<div style="background-color: #94c11faa;">
+`select()` picks variables based on their names.   
+`filter()` picks cases based on their values. 
+</div>
+`mutate()` -  adds or alters variables that are functions of existing variables  
+`summarise()` reduces multiple values down to a single summary.  
+`arrange()` changes the ordering of the rows.  
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+# dplyr
+
+.pull-left[
+### `filter()` - subsetting rows
+
+Reducing the number of rows in a data sat based on
+some logic.
+
+- `filter()` evaluates a statement to be logical (`TRUE` or `FALSE`)  
+]
+
+--
+
+.pull-right[
+```{r, echo = FALSE}
+knitr::include_graphics("gifs/filtering.gif")
+```
+]
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## dplyr - comparison to base-R
+
+#### tidy
+```{r, eval = FALSE}
+filter(penguins, bill_length_mm > 40)
+```
+
+
+#### base
+```{r, eval = FALSE}
+penguins[penguins$bill_length_mm > 40, ]
+
+# or
+subset(penguins, bill_length_mm > 40)
+```
+
+
+<div style="font-size: 15px;">
+<a href="https://dplyr.tidyverse.org/articles/base.html">https://dplyr.tidyverse.org/articles/base.html</a>
+</div>
 
 ---
 class: inverse, middle, center
 
 ## Go to RStudio
 ### live demo
+
+---
+
+```{r "filter1"}
+filter(penguins, species == "Chinstrap")
+```
+
+
+---
+
+```{r}
+filter(penguins, island == "Dream")
+```
+
+---
+
+```{r}
+filter(penguins, bill_length_mm > 40)
+```
+
+
+---
+
+```{r}
+filter(penguins, bill_length_mm > 40, species == "Chinstrap")
+```
+---
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+# dplyr
+
+.pull-left[
+### `select()` - reduce columns
+
+Reducing the number of columns (or rearranging columns)
+Can be used with column names, index integer, or tidyselect-functions
+
+tidy-select helpers
+   - `ends_with("string")` - column names ending with "string"  
+   - `starts_with("string")` - column names starting with "string"  
+   - `contains("string")` - column names containing "string"  
+]
+ 
+--
+
+.pull-right[
+```{r, echo = FALSE}
+knitr::include_graphics("gifs/selecting.gif")
+```
+]
+
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## dplyr - comparison to base-R
+
+#### tidy
+```{r, eval = FALSE}
+select(penguins, species, island, ends_with("mm"))
+```
+
+
+#### base
+```{r, eval = FALSE}
+penguins[c(1, 2, grep("mm$", names(penguins)))]
+
+# or
+subset(penguins, select = c("species", "island", "bill_length_mm", "bill_depth_mm", "flipper_length_mm"))
+```
+
+
+<div style="font-size: 15px;">
+<a href="https://dplyr.tidyverse.org/articles/base.html">https://dplyr.tidyverse.org/articles/base.html</a>
+</div>
+
+---
+class: inverse, middle, center
+
+## Go to RStudio
+### live demo
+
+---
+
+```{r}
+select(penguins, 1, 4, 6)
+```
+
+---
+
+```{r}
+select(penguins, species, island, year, bill_length_mm)
+```
+
+---
+
+```{r}
+select(penguins, species, island, year, starts_with("bill"))
+```
+
+---
+
+```{r}
+select(penguins, species, island, body_mass_g:year, ends_with("mm"))
+```
+
+---
+
+```{r}
+select(penguins, species, ends_with("mm"))
+```
+
+---
+
+```{r}
+select(penguins, is.numeric)
+```
+
+---
+
+```{r}
+select(penguins, !is.numeric)
+```
+
+---
+class: inverse, middle, center
+
+## Go to subsetting exercises 
+### `learnr::run_tutorial("002-subsetting", "tidyquintro")` 
 
 ---
 class: dark, center
@@ -365,10 +523,106 @@ background-position: 50% 65%
 ### the pipe - chaining commands
 
 ---
+background-image: url(img/pipe.png)
+background-size: 8%
+background-position: 95% 5%
+
+### the pipe - chaining commands
+
+- Common to many programming languages  
+   - sending the output from one function, straight into another, without saving the intermediary  
+
+- Only really work when input is the _first_ command to a function  
+   - This is not the case for most base-R functions, but is _always_ the case with tidyverse functions  
+
+- The common used pipe in R, `%>%`, originally comes from the magrittr package, but also comes with dplyr   
+
+???
+arguably, in tidyverse the chaining of commands is one of the things that makes it most powerful. 
+Chaining commands is a common programming concept, where you send the output of one command directly into another, without saving the intermediary. 
+This saves you from overcrowding your workspace with lots of new objects you will never use. 
+It is commonly referred to as a "pipe" and in R the common pipe is %>% 
+
+
+---
+background-image: url(img/pipe.png)
+background-size: 8%
+background-position: 95% 5%
+
+### Use
+
+.pull-left[
+```{r "pipe1", eval = FALSE}
+# standard
+select(penguins, 
+       species, island, ends_with("mm"))
+```
+
+```{r, eval = FALSE}
+# piped
+penguins %>% 
+  select(species, island, ends_with("mm"))
+```
+]
+
+.pull-right[
+```{r "pipe1-rend", ref.label="pipe1", echo = FALSE}
+```
+]
+
+---
+background-image: url(img/pipe.png)
+background-size: 8%
+background-position: 95% 5%
+
+### Use
+
+.pull-left[
+```{r "pipe2", eval = FALSE}
+penguins %>% 
+  select(species, island, 
+         starts_with("bill")) %>% 
+  filter(island == "Dream")
+```
+
+]
+
+.pull-right[
+```{r "pipe2-rend", ref.label="pipe2", echo = FALSE}
+```
+]
+
+---
+background-image: url(img/pipe.png)
+background-size: 8%
+background-position: 95% 5%
+
+### Use
+
+.pull-left[
+```{r "pipe3", eval = FALSE}
+penguins %>% 
+  select(species, island, 
+         starts_with("bill")) %>% 
+  filter(island == "Dream") %>% 
+  
+  ggplot(aes(species, bill_length_mm)) + 
+  geom_violin(aes(fill = species)) +
+  scale_fill_viridis_d(alpha = .7)
+```
+
+]
+
+.pull-right[
+```{r "pipe3-rend", ref.label="pipe3", echo = FALSE}
+```
+]
+
+---
 class: inverse, middle, center
 
-## Go to RStudio
-### live demo
+## Go to chaining exercises 
+### `learnr::run_tutorial("003-chaining", "tidyquintro")` 
 
 ---
 class: dark, center
@@ -380,11 +634,149 @@ background-position: 50% 65%
 ### data wrangling / manipulation
 
 ---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+# dplyr
+## grammar of data manipulation
+
+provides a consistent set of verbs that help you solve the most common data manipulation challenges:
+
+
+`select()` picks variables based on their names.   
+`filter()` picks cases based on their values. 
+<div style="background-color: #94c11faa;">
+`mutate()` -  adds or alters variables that are functions of existing variables  
+</div>
+`summarise()` reduces multiple values down to a single summary.  
+`arrange()` changes the ordering of the rows.  
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## dplyr - comparison to base-R
+
+#### tidy
+```{r, eval = FALSE}
+penguins %>% 
+  mutate( 
+    new_column = 1,
+    bill_ld_ratio = bill_length_mm/bill_depth_mm
+  )
+```
+
+
+#### base
+```{r, eval = FALSE}
+penguins$new_column <- 1
+penguins$bill_ld_ratio <- penguins$bill_length_mm/penguins$bill_depth_mm
+```
+
+
+<div style="font-size: 15px;">
+<a href="https://dplyr.tidyverse.org/articles/base.html">https://dplyr.tidyverse.org/articles/base.html</a>
+</div>
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## Adding new variables
+
+```{r}
+penguins %>% 
+  mutate( new_column = 1,
+    bill_ld_ratio = bill_length_mm/bill_depth_mm)
+```
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## dplyr - across many columns 
+
+```{r "dplyr-across"}
+penguins %>% mutate(across(ends_with("mm"), ~ .x/10))
+```
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## dplyr - across many columns 
+
+```{r "dplyr-across2"}
+penguins %>% mutate(across(ends_with("mm"), ~ .x/10, 
+                           .names = "{str_replace(.col, 'mm', 'cm')}") #<<
+                    ) %>% 
+  select(1:3, contains("bill"))
+```
+
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## dplyr - grouped
+
+```{r "dplyr-group1"}
+penguins %>% 
+  group_by(species) %>% 
+  mutate(
+    bill_length_sp_max = max(bill_length_mm, na.rm = TRUE), #<<
+    bill_length_pc = (bill_length_mm/bill_length_sp_max)*100 #<<
+    ) %>% 
+  select(1:3, contains("bill"))
+```
+
+---
 class: inverse, middle, center
 
 ## Go to RStudio
 ### live demo
 
+---
+
+```{r}
+penguins %>% 
+  mutate( 
+    new_column = 1,
+    bill_ld_ratio = bill_length_mm/bill_depth_mm
+    )
+```
+
+---
+
+```{r}
+penguins %>% 
+  group_by(species) %>% 
+  mutate(
+    bill_length_sp_max = max(bill_length_mm, na.rm = TRUE),
+    bill_length_pc = (bill_length_mm/bill_length_sp_max)*100
+    )
+```
+
+
+---
+
+```{r }
+penguins %>% 
+  mutate(across(ends_with("mm"), 
+                ~ .x/10))
+```
+
+---
+class: inverse, middle, center
+
+## Go to mutating exercises 
+### `learnr::run_tutorial("004-mutating", "tidyquintro")` 
 
 ---
 class: dark, middle, center

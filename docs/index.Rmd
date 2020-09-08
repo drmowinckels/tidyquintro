@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Quick intro to tidyverse presentations
 
-- [Introduction to tidyverse](tidyverse-introduction/tidyverse-introduction.html)  
-- [Tidy data wrangling](tidy-wrangling/tidy-wrangling.html)  
-- [Tidy data reshaping & summaries](tidy-summaries/tidy-summaries.html)  
+- [Introduction to tidyverse](000-tidyverse-introduction.html)  
+- [Tidy data wrangling](001-tidy-wrangling.html)  
+- [Tidy data reshaping & summaries](002-tidy-summaries.html)  
 
