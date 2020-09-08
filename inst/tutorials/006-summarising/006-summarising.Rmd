@@ -6,6 +6,9 @@ output:
     progressive: true # third level heading (###) is progressively revealed
     allow_skip: true # allows skipping exercises
 runtime: shiny_prerendered
+description: |
+  Getting some good summaries of your data is a nice way to quickly get an iadea of what you are working with.
+  This tutorial covers some of the ways you can summarise data using the tidyverse.
 ---
 
 ```{r setup, include=FALSE}

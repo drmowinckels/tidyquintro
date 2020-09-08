@@ -6,6 +6,10 @@ output:
     progressive: true # third level heading (###) is progressively revealed
     allow_skip: true # allows skipping exercises
 runtime: shiny_prerendered
+description: |
+  Changing the shape of your data is often necessary for certain other functions
+  to work best, or just to tidy up the data. This tutorial covers the two
+  pivot functions in the tidyverse to help you get the data from long to wide, and vice versa.
 ---
 
 ```{r setup, include=FALSE}
@@ -229,7 +233,7 @@ Try different variations on pivoting, selecting different columns,
 altering the naming of the columns etc.
 See what the results are, or what the errors you get are.
 
-```{r pivot_w4, exercise = TRUE, exercise.lines = 7}
+```{r pivot_w5, exercise = TRUE, exercise.lines = 7}
 penguins_long %>% 
   pivot_wider()
 ```

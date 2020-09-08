@@ -6,6 +6,10 @@ output:
     progressive: true # third level heading (###) is progressively revealed
     allow_skip: true # allows skipping exercises
 runtime: shiny_prerendered
+description: |
+  Adding or altering variables in a dataset is usually necessary to achieve your end goals.
+  In the tidyverse this functions are done through the `mutate()` function, which this tutorial
+  covers some basic use of. 
 ---
 
 ```{r setup, include=FALSE}
@@ -89,7 +93,7 @@ On the left you have the logical expression, and the on the right of the tilde (
 
 Adapt the below code so that penguins with body mass below 3 kg are "petite"
 
-```{r mutate2, exercise = TRUE, exercise.lines = 7}
+```{r mutate3, exercise = TRUE, exercise.lines = 7}
 penguins %>% 
   mutate(
     body_type = case_when(
@@ -99,7 +103,7 @@ penguins %>%
   )
 ```
 
-```{r mutate2-solution}
+```{r mutate3-solution}
 penguins %>% 
   mutate(
     body_type = case_when(
@@ -109,14 +113,14 @@ penguins %>%
   )
 ```
 
-```{r mutate2-check}
+```{r mutate3-check}
 grade_code(
   correct = random_praise(),
   incorrect = random_encouragement()
 )
 ```
 
-```{r mutate2-hint-1}
+```{r mutate3-hint-1}
 Have you used the correct sign for 'larger than'?
 ```
 
@@ -133,7 +137,7 @@ When data is grouped by one or more columns in the data, one can apply calculati
 This is powerful when you want to calculate which percentile a scores falls in, or other relational measures (like time since baseline).
 
 Adapt the code below, so that you get what percentile a penguins' bill_length is based on the species maximum.
-```{r mutate2, exercise = TRUE, exercise.lines = 7}
+```{r mutate4, exercise = TRUE, exercise.lines = 7}
 penguins %>% 
   group_by(_) %>% 
   mutate(
@@ -142,7 +146,7 @@ penguins %>%
   )
 ```
 
-```{r mutate2-solution}
+```{r mutate4-solution}
 penguins %>% 
   group_by(species) %>% 
   mutate(
@@ -151,14 +155,14 @@ penguins %>%
   )
 ```
 
-```{r mutate2-check}
+```{r mutate4-check}
 grade_code(
   correct = random_praise(),
   incorrect = random_encouragement()
 )
 ```
 
-```{r mutate2-hint-1}
+```{r mutate4-hint-1}
 Did you make sure the column names are correct?
 ```
 
@@ -169,12 +173,12 @@ It is possible, that the Islands have some impact on the penguins' size.
 Perhaps one island has more food available or less predators, so the penguins become larger. 
 
 Based on the code in the previous example, adapt it to be grouped by island in stead of species.
-```{r mutate2, exercise = TRUE, exercise.lines = 7}
+```{r mutate5, exercise = TRUE, exercise.lines = 7}
 # Copy the code from the previous example, or type it out.
 
 ```
 
-```{r mutate2-solution}
+```{r mutate5-solution}
 penguins %>% 
   group_by(island) %>% 
   mutate(
@@ -183,14 +187,14 @@ penguins %>%
   )
 ```
 
-```{r mutate2-check}
+```{r mutate5-check}
 grade_code(
   correct = random_praise(),
   incorrect = random_encouragement()
 )
 ```
 
-```{r mutate2-hint-1}
+```{r mutate5-hint-1}
 Did you make sure the column names are correct?
 ```
 

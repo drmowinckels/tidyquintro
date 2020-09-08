@@ -17,8 +17,9 @@ A 4 hour workshop with quick introduction to
 ## Workshop preparations
 
 This package contains materials that are necessary for the workshop. You
-can install tidyquintro from [github](), which will also install the
-packages that the tutorial will cover, with
+can install tidyquintro from
+[github](https://github.com/Athanasiamo/tidyquintro), which will also
+install the packages that the tutorial will cover, with
 
 ``` r
 # install.packages("remotes")
@@ -31,8 +32,9 @@ Loading the package will also load the necessary libraries directly
 library(tidyquintro)
 ```
 
-Additionally, the exercises connected to each of the topics will also be
-accessible via the learnr-package.
+Additionally, theere exercises connected to each of the topics which
+will also be accessible via the
+[learnr](https://rstudio.github.io/learnr/)-package.
 
 ``` r
 learnr::available_tutorials("tidyquintro")
@@ -77,7 +79,7 @@ between.
     
       - pivoting data with [tidyr](https://tidyr.tidyverse.org/) (\~25
         min)
-      - nesting data with [tidyr](https://tidyr.tidyverse.org/) (\~25
-        min)  
-      - working with nested data with
+      - grouped summaries with [dplyr](https://dplyr.tidyverse.org/)
+        (\~25 min)  
+      - working with nested data using
         [purrr](https://purrr.tidyverse.org/) (\~25 min)

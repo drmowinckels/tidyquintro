@@ -6,6 +6,10 @@ output:
     progressive: true # third level heading (###) is progressively revealed
     allow_skip: true # allows skipping exercises
 runtime: shiny_prerendered
+description: |
+  Subsetting data using the tidyverse is done through two main functions:
+  `filter()` and `select()`. This tutorial covers some basic use of these
+  two functions to subset your data.
 ---
 
 ```{r setup, include=FALSE}

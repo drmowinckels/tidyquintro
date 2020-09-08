@@ -6,6 +6,9 @@ output:
     progressive: true # third level heading (###) is progressively revealed
     allow_skip: true # allows skipping exercises
 runtime: shiny_prerendered
+description: |
+  Working on nested data is going to take time to master. This tutorial is aimed at
+  showing you some of the possibilities there are when you working on such data.
 ---
 
 ```{r setup, include=FALSE}

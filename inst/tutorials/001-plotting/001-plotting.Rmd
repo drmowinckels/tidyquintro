@@ -6,6 +6,9 @@ output:
     progressive: true # third level heading (###) is progressively revealed
     allow_skip: true # allows skipping exercises
 runtime: shiny_prerendered
+description: |
+  This tutorial will take you through plotting with ggplot2. It covers just the basics, but should give you
+  enough to get your own exploration of ggplot2 going.
 ---
 
 ```{r setup, include=FALSE}

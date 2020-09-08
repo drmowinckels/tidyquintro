@@ -6,6 +6,9 @@ output:
     progressive: true # third level heading (###) is progressively revealed
     allow_skip: true # allows skipping exercises
 runtime: shiny_prerendered
+description: |
+  Chaining commands to avoid saving intermediary output is common practice in many programming languages.
+  Using a pipe (” %>% "), this tutorial covers how pipes can improve your workflow, and make it more readable.
 ---
 
 ```{r setup, include=FALSE}
