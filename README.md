@@ -39,13 +39,19 @@ learnr::available_tutorials("tidyquintro")
 #> Available tutorials:
 #> * tidyquintro
 #>   - 001-plotting    : "Plotting data"
-#>   - 002-filtering   : "Subsetting data"
+#>   - 002-subsetting  : "Subsetting data"
 #>   - 003-chaining    : "Chaining data - the pipe"
 #>   - 004-mutating    : "Altering or adding variables to data sets"
 #>   - 005-pivoting    : "Pivoting data - long and wide formats"
 #>   - 006-summarising : "Summarising data"
 #>   - 007-nesting     : "Working with nested data sets"
 ```
+
+The best experience with the workshop is to have an RStudio newer than
+1.3. It is not necessary, but highly recommended.
+
+[RStudio downloads
+page](https://rstudio.com/products/rstudio/download/#download)
 
 ## Timeline
 
