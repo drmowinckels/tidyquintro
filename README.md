@@ -83,3 +83,9 @@ between.
         (\~25 min)  
       - working with nested data using
         [purrr](https://purrr.tidyverse.org/) (\~25 min)
+
+## Slides
+
+All slides for the workshop can be found at:
+
+<https://athanasiamo.github.io/tidyquintro/>

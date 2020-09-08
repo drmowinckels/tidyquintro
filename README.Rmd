@@ -66,4 +66,12 @@ All parts (except first intro) come with small exercises and breaks between.
   - pivoting data with [tidyr](https://tidyr.tidyverse.org/) (~25 min) 
   - grouped summaries with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
   - working with nested data using [purrr](https://purrr.tidyverse.org/) (~25 min) 
+  
+## Slides
+
+All slides for the workshop can be found at:
+
+[https://athanasiamo.github.io/tidyquintro/](https://athanasiamo.github.io/tidyquintro/)
+
+
 
