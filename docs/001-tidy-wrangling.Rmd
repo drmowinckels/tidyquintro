@@ -201,6 +201,50 @@ subset(penguins, bill_length_mm > 40)
 </div>
 
 ---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## filter use
+
+```{r}
+filter(penguins, bill_length_mm > 40)
+```
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## filter use
+
+```{r}
+filter(penguins, sex == "female")
+```
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## filter use
+
+```{r}
+filter(penguins, !is.na(sex) )
+```
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## filter use
+
+```{r}
+filter(penguins, !is.na(sex), bill_length_mm > 40)
+```
+
+---
 class: inverse, middle, center
 
 ## Go to RStudio
@@ -259,6 +303,50 @@ subset(penguins, select = c("species", "island", "bill_length_mm", "bill_depth_m
 <div style="font-size: 15px;">
 <a href="https://dplyr.tidyverse.org/articles/base.html">https://dplyr.tidyverse.org/articles/base.html</a>
 </div>
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## select use
+
+```{r}
+select(penguins, species, island, ends_with("mm"))
+```
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## select use
+
+```{r}
+select(penguins, species, island, starts_with("bill"))
+```
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## select use
+
+```{r}
+select(penguins, species, island, year, starts_with("bill"))
+```
+
+---
+background-image: url(img/dplyr.png)
+background-size: 8%
+background-position: 95% 5%
+
+## select use
+
+```{r}
+select(penguins, species, island, year, !starts_with("bill"))
+```
 
 ---
 class: inverse, middle, center
@@ -516,6 +604,6 @@ class: inverse, middle, center
 ---
 class: dark, middle, center
 
-# End or part 1
+# End of part 1
 ## 30 minute lunch break
 
