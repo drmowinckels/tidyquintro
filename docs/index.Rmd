@@ -1,14 +1,19 @@
 ---
-output: html_document
+title: "Quick intro to tidyverse presentations"
+output: 
+  html_document:
+    css: [lcbc-uio.css, lcbc-uio-fonts.css]
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Quick intro to tidyverse presentations
-
+### Slides
 - [Introduction to tidyverse](000-tidyverse-introduction.html)  
 - [Tidy data wrangling](001-tidy-wrangling.html)  
 - [Tidy data reshaping & summaries](002-tidy-summaries.html)  
 
+### Live demo slides
+- [Tidy data wrangling](001-tidy-wrangling-demo.html)  
+- [Tidy data reshaping & summaries](002-tidy-summaries-demo.html)  

@@ -32,7 +32,7 @@ Loading the package will also load the necessary libraries directly
 library(tidyquintro)
 ```
 
-Additionally, theere exercises connected to each of the topics which
+Additionally, there are exercises connected to each of the topics which
 will also be accessible via the
 [learnr](https://rstudio.github.io/learnr/)-package.
 
