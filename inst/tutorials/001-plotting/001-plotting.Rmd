@@ -203,22 +203,28 @@ quiz(
     answer("lattice", correct = TRUE),
     answer("tools"),
     answer("stats"),
-    answer("grid", correct = TRUE)
+    answer("grid", correct = TRUE),
+    allow_retry = TRUE
   ),
   
   question("When you want to fix a ggplot aesthetic to a single value, you do this by...",
     answer("'mapping' values using the `aes()` function"),
     answer("adapting extra plot appearence through themes and scales"),
-    answer("'setting' values outside the `aes()` function", correct = TRUE)),
+    answer("'setting' values outside the `aes()` function", correct = TRUE),
+    allow_retry = TRUE
+    ),
   
   question("When you want to make a ggplot aesthetic to a vary based on columns in the data set, you do this by...",
     answer("'mapping' values using the `aes()` function", correct = TRUE),
     answer("adapting extra plot appearence through themes and scales"),
-    answer("'setting' values outside the `aes()` function")),
+    answer("'setting' values outside the `aes()` function"),
+    allow_retry = TRUE
+    ),
   
     question("When you want to alter  the 'look' a ggplot, you do this by...",
     answer("'mapping' values using the `aes()` function"),
     answer("adapting extra plot appearence through themes and scales"),
-    answer("'setting' values outside the `aes()` function", correct = TRUE))
+    answer("'setting' values outside the `aes()` function", correct = TRUE),
+    allow_retry = TRUE)
 )
 ```

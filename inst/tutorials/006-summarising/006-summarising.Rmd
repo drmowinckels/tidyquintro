@@ -313,25 +313,28 @@ penguins %>%
 <!--   question("What functions can you use to subset a data set by rows?", -->
 <!--     answer("dplyr's `filter()`", correct = TRUE), -->
 <!--     answer("dplyr's `select()`"), -->
-<!--     answer("`subset()`", correct = TRUE) -->
+<!--     answer("`subset()`", correct = TRUE),
+    allow_retry = TRUE -->
 <!--   ), -->
 <!--   question("What functions can you use to subset a data set by columns", -->
 <!--     answer("dplyr's `filter()`"), -->
 <!--     answer("dplyr's `select()`", correct = TRUE), -->
-<!--     answer("`subset()`", correct = TRUE) -->
+<!--     answer("`subset()`", correct = TRUE),
+    allow_retry = TRUE -->
 <!--   ), -->
 <!--   question("If you want to select all columns in data 'df' that contains the string 'something', you can do that by", -->
 <!--     answer("`df[grepl('something', names(df))]`", correct = TRUE), -->
 <!--     answer("`select(df, starts_with('something')`"), -->
 <!--     answer("`df[,'something']`"), -->
-<!--     answer("`select(df, contains('something')`", correct = TRUE) -->
+<!--     answer("`select(df, contains('something')`", correct = TRUE),
+    allow_retry = TRUE -->
 <!--   ), -->
 <!--     question("If you want to subset rows so that you only have those below 18 years of age, you can do that by", -->
 <!--     answer("`df$age < 18`"), -->
 <!--     answer("`filter(df, age < 18)`", correct = TRUE), -->
 <!--     answer("`df[df$age < 18,]`", correct = TRUE), -->
-<!--     answer("`filter(df, age <= 18)`") -->
-<!--   ), -->
-<!--   allow_retry = TRUE -->
+<!--     answer("`filter(df, age <= 18)`"),
+    allow_retry = TRUE -->
+<!--   )
 <!-- ) -->
 <!-- ``` -->
