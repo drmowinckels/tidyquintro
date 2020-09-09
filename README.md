@@ -16,15 +16,51 @@ A 4 hour workshop with quick introduction to
 
 ## Workshop preparations
 
-This package contains materials that are necessary for the workshop. You
-can install tidyquintro from
+### Install R
+
+Make sure to have R installed on your computer. Download R from [the
+R-project](https://www.r-project.org/)
+
+### Install RStudio
+
+The best experience with the workshop is to have an RStudio newer than
+1.3. It is not necessary, but highly recommended.
+
+[RStudio downloads
+page](https://rstudio.com/products/rstudio/download/#download)
+
+### Windows computers
+
+The tidyverse packages require
+[rtools](https://cran.r-project.org/bin/windows/Rtools/) to be
+installed. Make sure to have the required version installed before
+proceeding.
+
+### Install
+
+This package contains materials that are necessary for the workshop.
+
+You can install tidyquintro from
 [github](https://github.com/Athanasiamo/tidyquintro), which will also
 install the packages that the tutorial will cover, with
 
 ``` r
-# install.packages("remotes")
+# install.packages("remotes") # uncomment to install if you do not have this package
 remotes::install_github("Athanasiamo/tidyquintro")
 ```
+
+If the above install fails, you can try installing the package from
+source. Download the newest tar-version from the [source](source/)
+directory, and install with
+
+``` r
+install.packages("path/to/tidyquitro_0.1.0.tar.gz", repos = NULL)
+#> Warning in install.packages("path/to/tidyquitro_0.1.0.tar.gz", repos = NULL):
+#> installation of package 'path/to/tidyquitro_0.1.0.tar.gz' had non-zero exit
+#> status
+```
+
+### Loading the package
 
 Loading the package will also load the necessary libraries directly
 
@@ -48,12 +84,6 @@ learnr::available_tutorials("tidyquintro")
 #>   - 006-summarising : "Summarising data"
 #>   - 007-nesting     : "Working with nested data sets"
 ```
-
-The best experience with the workshop is to have an RStudio newer than
-1.3. It is not necessary, but highly recommended.
-
-[RStudio downloads
-page](https://rstudio.com/products/rstudio/download/#download)
 
 ## Timeline
 

@@ -33,6 +33,7 @@ xaringanExtra::use_extra_styles(
 
 library(knitr)
 library(tidyquintro)
+library(countdown)
 ```
 
 class: dark, center
@@ -139,37 +140,17 @@ background-image: url(img/tidyr.png)
 background-size: 8%
 background-position: 95% 5%
 
-## Pivoting longer
-
-Also has several arguments to help you split things up directly in the call
-
-```{r}
-penguins %>% 
-  pivot_longer(contains("_"), # select the columns
-               names_to = c("body_part", "measure", "unit"), # break them into these columns
-               names_sep = "_") # break the column names on this character
-```
-
----
-background-image: url(img/tidyr.png)
-background-size: 8%
-background-position: 95% 5%
-
 ## Why pivot longer?
 
 .pull-left[
 Can be convenient for easy sub-plots with ggplot
 ```{r "long-ggplot1", eval = FALSE}
 penguins %>% 
-  pivot_longer(contains("_"),
-               names_to = c("body_part", 
-                            "measure", 
-                            "unit"),
-               names_sep = "_") %>% 
+  pivot_longer(contains("_")) %>% 
   
   ggplot(aes(x = value, fill = species)) + 
   geom_density() + 
-  facet_wrap(~ body_part, scales = "free") +
+  facet_wrap(~ name, scales = "free") +
   scale_fill_viridis_d(alpha = .5) +
   theme(legend.position = "bottom")
 ```
@@ -190,6 +171,7 @@ background-position: 95% 5%
 
 ```{r}
 penguins_long <- penguins %>% 
+  mutate(id = row_number()) %>% 
   pivot_longer(contains("_"),
                names_to = c("body_part", 
                             "measure", 
@@ -215,6 +197,18 @@ class: inverse, middle, center
 ## Go to subsetting exercises 
 ### `learnr::run_tutorial("005-pivoting", "tidyquintro")` 
 
+```{r, echo = FALSE}
+countdown(minutes = 8, 
+          left = 0, right = 0, top = "50%", 
+          padding = "50px", 
+          margin = "10%", 
+          font_size = "4em", 
+          color_running_background  = "transparent",
+          color_finished_background = "#ffffff",
+          play_sound = TRUE,
+          warn_when = 30)
+```
+
 ---
 class: dark, center
 background-image: url(img/dplyr.png), url(img/tidyr.png)
@@ -233,7 +227,8 @@ background-position: 95% 5%
 
 #### tidy
 ```{r, eval = FALSE}
-summarise(penguins ,mean(bill_length_mm, na.rm = TRUE))
+penguins %>% 
+  summarise(mean(bill_length_mm, na.rm = TRUE))
 ```
 
 
@@ -248,114 +243,6 @@ mean(penguins$bill_length_mm, na.rm = TRUE)
 </div>
 
 ---
-background-image: url(img/dplyr.png)
-background-size: 8%
-background-position: 95% 5%
-
-## dplyr - comparison to base-R
-
-#### tidy
-```{r, eval = FALSE}
-penguins %>% 
-  group_by(species) %>% 
-  summarise(m_bill_length = mean(bill_length_mm, na.rm = TRUE))
-```
-
-
-#### base
-```{r, eval = FALSE}
-aggregate(penguins$bill_length_mm, 
-          by = list(species = penguins$species), 
-          FUN  = "mean", na.rm = TRUE)
-```
-
-
-<div style="font-size: 15px;">
-<a href="https://dplyr.tidyverse.org/articles/base.html">https://dplyr.tidyverse.org/articles/base.html</a>
-</div>
-
----
-background-image: url(img/dplyr.png)
-background-size: 8%
-background-position: 95% 5%
-
-### great for summary statistics!
-```{r}
-penguins %>% 
-  group_by(species) %>% 
-  summarise(across(contains("_"), 
-                   list(Mean = mean, 
-                        SD = sd,
-                        Min = min,
-                        Max = max), 
-                   na.rm = TRUE))
-```
-
----
-background-image: url(img/dplyr.png)
-background-size: 8%
-background-position: 95% 5%
-
-### great for summary statistics!
-```{r}
-penguins %>% 
-  group_by(species) %>% 
-  summarise(across(contains("_"), 
-                   list(Mean = mean, 
-                        SD = sd,
-                        Min = min,
-                        Max = max), 
-                   na.rm = TRUE,
-                   .names = "{.fn}_{.col}"))
-```
-
-
----
-background-image: url(img/dplyr.png), url(img/tidyr.png)
-background-size: 8%
-background-position: 93% 5%, 97.5% 16.5%
-
-### combined with tidyr pivots we get a long way!
-
-```{r}
-penguins %>% 
-  group_by(species) %>% 
-  summarise(across(contains("_"), 
-                   list(Mean = mean, 
-                        SD = sd,
-                        Min = min,
-                        Max = max), 
-                   na.rm = TRUE)) %>% 
-  pivot_longer(contains("_"),
-               names_to = c("body_part", "measure", "unit", "stat"),
-               names_sep = "_") %>% 
-  pivot_wider(names_from = stat, values_from = value)
-```
-
----
-background-image: url(img/dplyr.png), url(img/tidyr.png)
-background-size: 8%
-background-position: 93% 5%, 97.5% 16.5%
-
-### combined with tidyr pivots we get a long way!
-
-```{r}
-penguins %>% 
-  pivot_longer(contains("_"),
-               names_to = c("body_part", "measure", "unit", "stat"),
-               names_sep = "_",
-               values_drop_na = TRUE) %>% 
-  group_by(species, body_part, measure, unit) %>% 
-  summarise(across(value, 
-                   list(Mean = mean, 
-                        SD = sd,
-                        Min = min,
-                        Max = max),
-                   .names = "{.fn}"))
-```
-
-
----
 class: inverse, middle, center
 
 ## Go to RStudio
@@ -367,6 +254,12 @@ class: inverse, middle, center
 ## Go to subsetting exercises 
 ### `learnr::run_tutorial("006-summarising", "tidyquintro")` 
 
+```{r, echo = FALSE}
+countdown(minutes = 8, 
+          left = 0, right = 0, top = "50%", 
+          play_sound = TRUE,
+          warn_when = 30)
+```
 
 ---
 class: dark, center
@@ -415,78 +308,6 @@ lapply(unique(penguins$groups), function(x) lm(bill_length_mm ~ bill_depth_mm,
 </div>
 
 ---
-background-image: url(img/dplyr.png), url(img/tidyr.png) 
-background-size: 8%
-background-position: 93% 5%, 97.5% 19%
-
-## Nesting data
-
-```{r}
-penguins %>% 
-    nest_by(species, island)
-```
-
-
----
-background-image: url(img/dplyr.png), url(img/tidyr.png), url(img/purrr.png)
-background-size: 8%
-background-position: 93% 5%, 97.5% 19%, 84.5% 5%
-
-## Nesting data
-
-```{r}
-penguins %>% 
-    nest_by(species, island) %>% 
-    mutate(lm_model = list(
-      lm(bill_length_mm ~ bill_depth_mm, data = data)
-      ))
-```
-
-
----
-background-image: url(img/dplyr.png), url(img/tidyr.png), url(img/purrr.png)
-background-size: 8%
-background-position: 93% 5%, 97.5% 19%, 84.5% 5%
-
-## Nesting data
-
-```{r}
-model_penguins <- penguins %>% 
-  nest_by(species, island) %>% 
-  mutate(
-    lm_model = list(
-      lm(bill_length_mm ~ bill_depth_mm, data = data)
-    ),
-    table = list(broom::tidy(lm_model))
-    )
-model_penguins
-```
-
----
-background-image: url(img/dplyr.png), url(img/tidyr.png), url(img/purrr.png)
-background-size: 8%
-background-position: 93% 5%, 97.5% 19%, 84.5% 5%
-
-## Unnesting columns
-
-```{r}
-model_penguins %>% 
-  unnest(data)
-```
-
----
-background-image: url(img/dplyr.png), url(img/tidyr.png), url(img/purrr.png)
-background-size: 8%
-background-position: 93% 5%, 97.5% 19%, 84.5% 5%
-
-## Unnesting columns
-
-```{r}
-model_penguins %>% 
-  unnest(table)
-```
-
----
 class: inverse, middle, center
 
 ## Go to RStudio
@@ -499,8 +320,14 @@ class: inverse, middle, center
 ## Go to subsetting exercises 
 ### `learnr::run_tutorial("006-nesting", "tidyquintro")` 
 
+```{r, echo = FALSE}
+countdown(minutes = 8, 
+          left = 0, right = 0, top = "50%", 
+          play_sound = TRUE,
+          warn_when = 30)
+```
+
 ---
 class: dark, middle, center
 
-# End of part 2 & workshop
-## Thank you for your attention
+# End of part 2 
