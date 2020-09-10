@@ -31,12 +31,14 @@ tutorial_options(exercise.checker = grade_learnr)
 Create a column named `bill_ld_ratio` that is the value of `bill_length_mm` divided by `bill_depth_mm`
 ```{r mutate1, exercise = TRUE, exercise.lines = 3}
 penguins %>% 
-  mutate(_ = _ / _)
+  mutate(_ = _ / _) %>% 
+  select(species, island, contains("bill"))
 ```
 
 ```{r mutate1-solution}
 penguins %>% 
-  mutate(bill_ld_ratio = bill_length_mm / bill_depth_mm)
+  mutate(bill_ld_ratio = bill_length_mm / bill_depth_mm) %>% 
+  select(species, island, contains("bill"))
 ```
 
 ```{r mutate1-check}
@@ -65,12 +67,14 @@ The first value after the expression is the value assigned if the expression is 
 Adapt the code below to evaluate if body mass is above 4.5kg, and assign rows to either "large" or "normal"
 ```{r mutate2, exercise = TRUE, exercise.lines = 3}
 penguins %>% 
-  mutate(body_type = ifelse(body_mass_g _ 4500, "large", "normal"))
+  mutate(body_type = ifelse(body_mass_g _ 4500, "large", "normal")) %>% 
+  select(species, island, contains("body"))
 ```
 
 ```{r mutate2-solution}
 penguins %>% 
-  mutate(body_type = ifelse(body_mass_g > 4500, "large", "normal"))
+  mutate(body_type = ifelse(body_mass_g > 4500, "large", "normal")) %>% 
+  select(species, island, contains("body"))
 ```
 
 ```{r mutate2-check}
@@ -100,7 +104,8 @@ penguins %>%
       body_mass_g _ 4500 ~ "large",
       body_mass_g _ 3000 ~ "petite",
       TRUE ~ "normal") # the rest
-  )
+  ) %>% 
+  select(species, island, contains("body"))
 ```
 
 ```{r mutate3-solution}
@@ -110,7 +115,8 @@ penguins %>%
       body_mass_g > 4500 ~ "large",
       body_mass_g < 3000 ~ "petite",
       TRUE ~ "normal") # the rest
-  )
+  ) %>% 
+  select(species, island, contains("body"))
 ```
 
 ```{r mutate3-check}
@@ -143,7 +149,8 @@ penguins %>%
   mutate(
     bill_length_sp_max = max(__, na.rm = TRUE),
     bill_length_pc = (bill_length_mm/__)*100
-  )
+  ) %>% 
+  select(species, island, contains("bill"))
 ```
 
 ```{r mutate4-solution}
@@ -152,7 +159,8 @@ penguins %>%
   mutate(
     bill_length_sp_max = max(bill_length_mm, na.rm = TRUE),
     bill_length_pc = (bill_length_mm/bill_length_sp_max)*100
-  )
+  ) %>% 
+  select(species, island, contains("bill"))
 ```
 
 ```{r mutate4-check}
@@ -184,7 +192,8 @@ penguins %>%
   mutate(
     bill_length_sp_max = max(bill_length_mm, na.rm = TRUE),
     bill_length_pc = (bill_length_mm/bill_length_sp_max)*100
-  )
+  ) %>% 
+  select(species, island, contains("bill"))
 ```
 
 ```{r mutate5-check}

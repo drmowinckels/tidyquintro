@@ -258,11 +258,11 @@ Particularly factors, what columns are factors in this data set?
 Complete the code to select only columns that are factors.
 
 ```{r select7, exercise = TRUE, exercise.lines = 3}
-select(penguins, is._)
+select(penguins, where(is._))
 ```
 
 ```{r select7-solution}
-select(penguins, is.factor)
+select(penguins, where(is.factor))
 ```
 
 

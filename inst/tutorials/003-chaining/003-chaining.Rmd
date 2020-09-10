@@ -64,7 +64,7 @@ penguins %>%
 ```{r pipe2-solution}
 penguins %>% 
   filter(species == "Gentoo") %>% 
-  select(species, contains("bill")))
+  select(species, contains("bill"))
 ```
 
 ```{r pipe2-check}
