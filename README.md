@@ -16,6 +16,17 @@ A 4 hour workshop with quick introduction to
 
 ## Workshop preparations
 
+### Recommended setup
+
+This workshop is a combination of presentation, live coding and
+exercises. If you are attending it as a webinar, having a dual monitor
+set-up is recommended. This would enable you to follow the live coding,
+by also typing in the commands and experience the effects you self.
+Programming is a skill where you learn best by doing.
+
+That being said, as there are also exercises you can also follow using a
+single monitor.
+
 ### Install R
 
 Make sure to have R installed on your computer. Download R from [the
@@ -55,9 +66,6 @@ directory, and install with
 
 ``` r
 install.packages("path/to/tidyquitro_0.1.0.tar.gz", repos = NULL)
-#> Warning in install.packages("path/to/tidyquitro_0.1.0.tar.gz", repos = NULL):
-#> installation of package 'path/to/tidyquitro_0.1.0.tar.gz' had non-zero exit
-#> status
 ```
 
 ### Loading the package

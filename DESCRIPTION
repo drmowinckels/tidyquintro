@@ -1,7 +1,7 @@
 Package: tidyquintro
 Type: Package
 Title: Quick intro to Tidyverse
-Version: 0.1.0
+Version: 0.1.01
 Authors@R: person("Athanasia Mo", "Mowinckel", 
                     email = "a.m.mowinckel@psykologi.uio.no", 
                     role = c("aut", "cre"),
