@@ -32,6 +32,13 @@ single monitor.
 Make sure to have R installed on your computer. Download R from [the
 R-project](https://www.r-project.org/)
 
+#### Windows computers
+
+The tidyverse packages require
+[rtools](https://cran.r-project.org/bin/windows/Rtools/) to be
+installed. Make sure to have the required version installed before
+proceeding.
+
 ### Install RStudio
 
 The best experience with the workshop is to have an RStudio newer than
@@ -40,14 +47,7 @@ The best experience with the workshop is to have an RStudio newer than
 [RStudio downloads
 page](https://rstudio.com/products/rstudio/download/#download)
 
-### Windows computers
-
-The tidyverse packages require
-[rtools](https://cran.r-project.org/bin/windows/Rtools/) to be
-installed. Make sure to have the required version installed before
-proceeding.
-
-### Install
+### Install course materials
 
 This package contains materials that are necessary for the workshop.
 
@@ -56,9 +56,11 @@ You can install tidyquintro from
 install the packages that the tutorial will cover, with
 
 ``` r
-# install.packages("remotes") # uncomment to install if you do not have this package
+install.packages("remotes")
 remotes::install_github("Athanasiamo/tidyquintro")
 ```
+
+#### Install error troubleshooting
 
 If the above install fails, you can try installing the package from
 source. Download the newest tar-version from the [source](source/)
@@ -67,6 +69,10 @@ directory, and install with
 ``` r
 install.packages("path/to/tidyquitro_0.1.0.tar.gz", repos = NULL)
 ```
+
+If you are still struggling to install the package, please create [a
+ticket](https://github.com/Athanasiamo/tidyquintro/issues) pasting the
+command and output you get so I can help you get it sorted.
 
 ### Loading the package
 
