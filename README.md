@@ -62,12 +62,21 @@ remotes::install_github("Athanasiamo/tidyquintro")
 
 #### Install error troubleshooting
 
-If the above install fails, you can try installing the package from
-source. Download the newest tar-version from the [source](source/)
+If the above install fails, you can try installing everything
+individually and then the package from source. Start by installing the
+dependent packages for the course:
+
+``` r
+install.packages(c("tidyverse", "palmerpenguins", "learnr", "remotes"))
+remotes::install_github("rstudio-education/gradethis")
+```
+
+When these are successful, you should be able to install the course
+package. Download the newest tar-version from the [source](source/)
 directory, and install with
 
 ``` r
-install.packages("path/to/tidyquitro_0.1.0.tar.gz", repos = NULL)
+install.packages("/path/to/tidyquintro_0.1.01.tar.gz", repos = NULL)
 ```
 
 If you are still struggling to install the package, please create [a
