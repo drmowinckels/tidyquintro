@@ -29,7 +29,9 @@ single monitor.
 
 ### Install R
 
-Make sure to have R installed on your computer. Download R from [the
+Make sure to have R installed on your computer. It is recommended that
+you have a newer version of R installed, preferably higher than 4.0.0,
+but at minimum higher than 3.5.3. Download R from [the
 R-project](https://www.r-project.org/)
 
 #### Windows computers
