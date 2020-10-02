@@ -3,6 +3,9 @@ title: "Tidyquintro course website"
 description: |
   A 4 hour workshop with quick introduction to [tidyverse](https://www.tidyverse.org/).
 site: distill::distill_website
+author:
+  - name: Athanasia Monika Mowinckel
+    affiliation: "<a href='https://www.oslobrains.no'>Center for Lifespan Changes in Brain and Cognition</a>, University of Oslo, Norway"
 ---
 
 ```{r setup, include=FALSE}
