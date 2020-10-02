@@ -9,4 +9,4 @@
 ^pkgdown$
 ^\.github$
 ^\.travis\.yml$
-^\source$
+^source$
