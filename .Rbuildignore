@@ -9,4 +9,7 @@
 ^pkgdown$
 ^\.github$
 ^\.travis\.yml$
-^\source$
+^source$
+^_site*
+^index*
+^.nojekyll$

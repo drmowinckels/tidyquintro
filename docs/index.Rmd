@@ -1,20 +1,33 @@
 ---
-title: "Quick intro to tidyverse presentations"
-output: 
-  html_document:
-    css: [lcbc-uio.css, lcbc-uio-fonts.css]
+title: "Tidyquintro course website"
+description: |
+  A 4 hour workshop with quick introduction to [tidyverse](https://www.tidyverse.org/).
+site: distill::distill_website
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
 ```
 
-### Slides
-- [Introduction to tidyverse](000-tidyverse-introduction.html)  
-- [Tidy data wrangling](001-tidy-wrangling.html)  
-- [Tidy data reshaping & summaries](002-tidy-summaries.html)  
-- [Conclusion](003-tidyverse-conclusion.html)  
+## Timeline
+All parts (except first intro) come with small exercises and breaks between.
 
-### Live demo slides
-- [Tidy data wrangling](001-tidy-wrangling-demo.html)  
-- [Tidy data reshaping & summaries](002-tidy-summaries-demo.html)  
+- **Introduction to [tidyverse](https://www.tidyverse.org/) concepts** (15 minutes)  
+
+- **Tidy data wrangling** - with translations to base-R (~ 2 hours) 
+  - plotting data with [ggplot2](https://ggplot2.tidyverse.org/) (~25 min) 
+  - sub-setting data with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
+  - chaining commands with the pipe `%>%` (~10 min)  
+  - adding and altering variables with [dplyr](https://dplyr.tidyverse.org/)  (~25 min)  
+
+- **Lunch break** (30 min)  
+
+- **Tidy data reshaping & summaries** - avoiding loops (~ 1.5 hours)   
+  - pivoting data with [tidyr](https://tidyr.tidyverse.org/) (~25 min) 
+  - grouped summaries with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
+  - working with nested data using [purrr](https://purrr.tidyverse.org/) (~25 min) 
+  
