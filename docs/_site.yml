@@ -1,0 +1,29 @@
+name: "docs"
+title: "Tidyquintro course website"
+description: |
+  Tidyquintro course website
+output_dir: "_site"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Workshop preparations"
+      href: prep.html
+    - text: "Slides"
+      menu:
+        - text: "Introduction"
+          href: 000-tidyverse-introduction.html
+        - text: "Part 1 - Tidy data wrangling"
+          href: 001-tidy-wrangling.html
+        - text: "Part 2 - Tidy data summaries"
+          href: 002-tidy-summaries.html
+        - text: "Conclusion"
+          href: 003-tidyverse-conclusion.html
+    - text: "Demonstrations"
+      menu:
+        - text: "Part 1 - Tidy data wrangling"
+          href: 001-tidy-wrangling-demo.html
+        - text: "Part 2 - Tidy data summaries"
+          href: 002-tidy-summaries-demo.html
+
+output: distill::distill_article

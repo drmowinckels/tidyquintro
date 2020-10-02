@@ -10,3 +10,6 @@
 ^\.github$
 ^\.travis\.yml$
 ^source$
+^_site*
+^index*
+^.nojekyll$
