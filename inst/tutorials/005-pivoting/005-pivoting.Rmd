@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE,
 # enable code checking
 tutorial_options(exercise.checker = grade_learnr)
 
-penguins_long <- penguins %>% 
+penguins_long <- penguins |> 
   pivot_longer(starts_with("bill"),
                names_to = c("part", "measure" , "unit"),
                names_sep = "_")
@@ -40,12 +40,12 @@ Learning to pivot data to the required shape is very important.
 Start by pivoting the penguins data so that all the bill measurements (starts with "bill") are in the same column.
 
 ```{r pivot1, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   pivot_longer(_)
 ```
 
 ```{r pivot1-solution}
-penguins %>% 
+penguins |> 
   pivot_longer(starts_with("bill"))
 ```
 
@@ -70,14 +70,14 @@ Do not worry about column naming, just get the measure into a column, and the me
 
 Alter the names in one go, so that there are three columns named "part", "measure" and "unit" after the pivot.
 ```{r pivot2, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   pivot_longer(_,
                names_to = c(_, _ , _),
                names_sep = _)
 ```
 
 ```{r pivot2-solution}
-penguins %>% 
+penguins |> 
   pivot_longer(starts_with("bill"),
                names_to = c("part", "measure" , "unit"),
                names_sep = "_")
@@ -104,7 +104,7 @@ when pivoting, it is common that quite some `NA` values appear in the values col
 We can remove these immediately by making the argument `values_drop_na` be  `TRUE`
 
 ```{r pivot3, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   pivot_longer(starts_with("bill"),
                names_to = c("part", "measure" , "unit"),
                names_sep = "_",
@@ -112,7 +112,7 @@ penguins %>%
 ```
 
 ```{r pivot3-solution}
-penguins %>% 
+penguins |> 
   pivot_longer(starts_with("bill"),
                names_to = c("part", "measure" , "unit"),
                names_sep = "_",
@@ -142,7 +142,7 @@ altering the naming of the columns etc.
 See what the results are, or what the errors you get are.
 
 ```{r pivot4, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   pivot_longer()
 ```
 
@@ -155,7 +155,7 @@ Also, particular analyses require wide data, so being able to get data in to a w
 For these exercises, you have a long format penguins dataset you can access, that has been made as follows:
 
 ```{r, eval = FALSE}
-penguins_long <- penguins %>% 
+penguins_long <- penguins |> 
   pivot_longer(starts_with("bill"),
                names_to = c("part", "measure" , "unit"),
                names_sep = "_")
@@ -164,14 +164,14 @@ penguins_long <- penguins %>%
 
 Turn the penguins_long dataset back to its original state
 ```{r pivot_w1, exercise = TRUE, exercise.lines = 7}
-penguins_long %>% 
+penguins_long |> 
   pivot_wider(names_from = c(_, _, _), # pivot these columns
               values_from = _, # take the values from here
               names_sep = _) # separate names_from with this character
 ```
 
 ```{r pivot_w1-solution}
-penguins_long %>% 
+penguins_long |> 
   pivot_wider(names_from = c("body_part", "measure", "unit"), # pivot these columns
               values_from = "value", # take the values from here
               names_sep = "_") # separate names_from with this character
@@ -201,14 +201,14 @@ You can decide what value to place here, though it is recommended to keep it at 
 But let us try setting the values to something outrageous, like 10000!
 
 ```{r pivot_w4, exercise = TRUE, exercise.lines = 7}
-penguins_long %>% 
+penguins_long |> 
   pivot_wider(names_from = c(_, _, _), # pivot these columns
               values_from = _, # take the values from here
               names_sep = _) # separate names_from with this character
 ```
 
 ```{r pivot_w4-solution}
-penguins_long %>% 
+penguins_long |> 
   pivot_wider(names_from = c("body_part", "measure", "unit"), # pivot these columns
               values_from = "value", # take the values from here
               names_sep = "_", # separate names_from with this character
@@ -234,7 +234,7 @@ altering the naming of the columns etc.
 See what the results are, or what the errors you get are.
 
 ```{r pivot_w5, exercise = TRUE, exercise.lines = 7}
-penguins_long %>% 
+penguins_long |> 
   pivot_wider()
 ```
 

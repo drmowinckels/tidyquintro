@@ -8,7 +8,7 @@ output:
 runtime: shiny_prerendered
 description: |
   Chaining commands to avoid saving intermediary output is common practice in many programming languages.
-  Using a pipe (” %>% "), this tutorial covers how pipes can improve your workflow, and make it more readable.
+  Using a pipe (” |> "), this tutorial covers how pipes can improve your workflow, and make it more readable.
 ---
 
 ```{r setup, include=FALSE}
@@ -33,7 +33,7 @@ filter(penguins, species == "Gentoo")
 ```
 
 ```{r pipe1-solution}
-penguins %>% filter(species == "Gentoo")
+penguins |> filter(species == "Gentoo")
 ```
 
 ```{r pipe1-check}
@@ -44,7 +44,7 @@ grade_code(
 ```
 
 ```{r pipe1-hint-1}
-enter the dataset first then pipe ` %>% ` into the filter function, excluding the data set name inside the filter
+enter the dataset first then pipe ` |> ` into the filter function, excluding the data set name inside the filter
 ```
 
 
@@ -54,16 +54,16 @@ Alter the code below so that rather than being two distinct function calls, they
 Alter the code so that instead of being a standard R command, that the data is piped into the command instead. 
 
 ```{r pipe2, exercise = TRUE, exercise.lines = 6}
-penguins %>% 
+penguins |> 
   filter(species == "Gentoo")
 
-penguins %>% 
+penguins |> 
   select(species, contains("bill"))
 ```
 
 ```{r pipe2-solution}
-penguins %>% 
-  filter(species == "Gentoo") %>% 
+penguins |> 
+  filter(species == "Gentoo") |> 
   select(species, contains("bill"))
 ```
 

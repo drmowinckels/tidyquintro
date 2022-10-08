@@ -30,14 +30,14 @@ tutorial_options(exercise.checker = grade_learnr)
 
 Create a column named `bill_ld_ratio` that is the value of `bill_length_mm` divided by `bill_depth_mm`
 ```{r mutate1, exercise = TRUE, exercise.lines = 3}
-penguins %>% 
-  mutate(_ = _ / _) %>% 
+penguins |> 
+  mutate(_ = _ / _) |> 
   select(species, island, contains("bill"))
 ```
 
 ```{r mutate1-solution}
-penguins %>% 
-  mutate(bill_ld_ratio = bill_length_mm / bill_depth_mm) %>% 
+penguins |> 
+  mutate(bill_ld_ratio = bill_length_mm / bill_depth_mm) |> 
   select(species, island, contains("bill"))
 ```
 
@@ -66,14 +66,14 @@ The first value after the expression is the value assigned if the expression is 
 
 Adapt the code below to evaluate if body mass is above 4.5kg, and assign rows to either "large" or "normal"
 ```{r mutate2, exercise = TRUE, exercise.lines = 3}
-penguins %>% 
-  mutate(body_type = ifelse(body_mass_g _ 4500, "large", "normal")) %>% 
+penguins |> 
+  mutate(body_type = ifelse(body_mass_g _ 4500, "large", "normal")) |> 
   select(species, island, contains("body"))
 ```
 
 ```{r mutate2-solution}
-penguins %>% 
-  mutate(body_type = ifelse(body_mass_g > 4500, "large", "normal")) %>% 
+penguins |> 
+  mutate(body_type = ifelse(body_mass_g > 4500, "large", "normal")) |> 
   select(species, island, contains("body"))
 ```
 
@@ -98,24 +98,24 @@ On the left you have the logical expression, and the on the right of the tilde (
 Adapt the below code so that penguins with body mass below 3 kg are "petite"
 
 ```{r mutate3, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   mutate(
     body_type = case_when(
       body_mass_g _ 4500 ~ "large",
       body_mass_g _ 3000 ~ "petite",
       TRUE ~ "normal") # the rest
-  ) %>% 
+  ) |> 
   select(species, island, contains("body"))
 ```
 
 ```{r mutate3-solution}
-penguins %>% 
+penguins |> 
   mutate(
     body_type = case_when(
       body_mass_g > 4500 ~ "large",
       body_mass_g < 3000 ~ "petite",
       TRUE ~ "normal") # the rest
-  ) %>% 
+  ) |> 
   select(species, island, contains("body"))
 ```
 
@@ -144,22 +144,22 @@ This is powerful when you want to calculate which percentile a scores falls in, 
 
 Adapt the code below, so that you get what percentile a penguins' bill_length is based on the species maximum.
 ```{r mutate4, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
-  group_by(_) %>% 
+penguins |> 
+  group_by(_) |> 
   mutate(
     bill_length_sp_max = max(__, na.rm = TRUE),
     bill_length_pc = (bill_length_mm/__)*100
-  ) %>% 
+  ) |> 
   select(species, island, contains("bill"))
 ```
 
 ```{r mutate4-solution}
-penguins %>% 
-  group_by(species) %>% 
+penguins |> 
+  group_by(species) |> 
   mutate(
     bill_length_sp_max = max(bill_length_mm, na.rm = TRUE),
     bill_length_pc = (bill_length_mm/bill_length_sp_max)*100
-  ) %>% 
+  ) |> 
   select(species, island, contains("bill"))
 ```
 
@@ -187,12 +187,12 @@ Based on the code in the previous example, adapt it to be grouped by island in s
 ```
 
 ```{r mutate5-solution}
-penguins %>% 
-  group_by(island) %>% 
+penguins |> 
+  group_by(island) |> 
   mutate(
     bill_length_sp_max = max(bill_length_mm, na.rm = TRUE),
     bill_length_pc = (bill_length_mm/bill_length_sp_max)*100
-  ) %>% 
+  ) |> 
   select(species, island, contains("bill"))
 ```
 

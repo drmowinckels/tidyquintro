@@ -33,12 +33,12 @@ So it's best to just give it a go!
 First start by trying to summarise a single column, `bill_length_mm` by calculating its mean.
 
 ```{r sum_1, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   summarise(_(_, na.rm = _))
 ```
 
 ```{r sum_1-solution}
-penguins %>% 
+penguins |> 
   summarise(mean(bill_length_mm, na.rm = TRUE))
 ```
 
@@ -60,13 +60,13 @@ Get the mean for both `bill_depth_mm` and `bill_length_mm` by summarising each.
 
 
 ```{r sum_2, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   summarise(bill_length_mm = mean(__, na.rm = _),
             bill_depth_mm = mean(__, na.rm = _))
 ```
 
 ```{r sum_2-solution}
-penguins %>% 
+penguins |> 
   summarise(bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
             bill_depth_mm = mean(bill_depth_mm, na.rm = TRUE))
 ```
@@ -89,12 +89,12 @@ In the tidyverse we do this with the `across` function, summarising across multi
 Get the mean of all the columns starting with "bill"
 
 ```{r sum_3, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   summarise(across(__, .fns = mean, na.rm = TRUE)
 ```
 
 ```{r sum_3-solution}
-penguins %>% 
+penguins |> 
   summarise(across(starts_with("bill"), .fns = mean, na.rm = TRUE))
 ```
 
@@ -120,7 +120,7 @@ In the tidyverse we do this with the `across` function, summarising across multi
 Get the descriptive statistics of all the columns starting with "bill" (mean, sd, min and max)
 
 ```{r sum_4, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   summarise(across(__, .fns = list(mean = mean,
                                    _ = _,
                                    _ = _,
@@ -130,7 +130,7 @@ penguins %>%
 ```
 
 ```{r sum_4-solution}
-penguins %>% 
+penguins |> 
   summarise(across(starts_with("bill"), 
                    .fns = list(mean = mean,
                                sd = sd,
@@ -164,14 +164,14 @@ These groupings make it possible to aggregate data given the groups, or get summ
 Start out slow, by grouping the data by species and getting the mean of the `bill_length_mm` column
 
 ```{r sum_g1, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
-  group_by() %>% 
+penguins |> 
+  group_by() |> 
   summarise(_(_, na.rm = _))
 ```
 
 ```{r sum_g1-solution}
-penguins %>% 
-  group_by(species) %>% 
+penguins |> 
+  group_by(species) |> 
   summarise(mean(bill_length_mm, na.rm = TRUE))
 ```
 
@@ -193,15 +193,15 @@ Group the data by island instead, and take the summary of two columns
 
 
 ```{r sum_g2, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
-  group_by(_) %>% 
+penguins |> 
+  group_by(_) |> 
   summarise(bill_length_mm = mean(__, na.rm = _),
             bill_depth_mm = mean(__, na.rm = _))
 ```
 
 ```{r sum_g2-solution}
-penguins %>% 
-  group_by(island) %>% 
+penguins |> 
+  group_by(island) |> 
   summarise(bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
             bill_depth_mm = mean(bill_depth_mm, na.rm = TRUE))
 ```
@@ -223,14 +223,14 @@ Acutally, I'm convinced that both species and island make meaningful groups here
 Group the data by both, and grab the mean of all bill measurements
 
 ```{r sum_g3, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
-  group_by(_) %>% 
+penguins |> 
+  group_by(_) |> 
   summarise(across(__, .fns = mean, na.rm = TRUE)
 ```
 
 ```{r sum_g3-solution}
-penguins %>% 
-  group_by(species, island) %>% 
+penguins |> 
+  group_by(species, island) |> 
   summarise(across(starts_with("bill"), .fns = mean, na.rm = TRUE))
 ```
 
@@ -256,7 +256,7 @@ In the tidyverse we do this with the `across` function, summarising across multi
 Get the descriptive statistics of all the columns starting with "bill" (mean, sd, min and max)
 
 ```{r sum_g4, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   summarise(across(__, .fns = list(mean = mean,
                                    _ = _,
                                    _ = _,
@@ -266,7 +266,7 @@ penguins %>%
 ```
 
 ```{r sum_g4-solution}
-penguins %>% 
+penguins |> 
   summarise(across(starts_with("bill"), 
                    .fns = list(mean = mean,
                                sd = sd,
@@ -298,8 +298,8 @@ Adapt the code below and just try different things.
 See what happens, look at the possible errors etc.
 
 ```{r sum_g5, exercise = TRUE, exercise.lines = 8}
-penguins %>% 
-  group_by(_) %>% 
+penguins |> 
+  group_by(_) |> 
   summarise(across(__, 
                      .fns = list(), 
                      na.rm = TRUE)

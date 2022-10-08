@@ -12,18 +12,18 @@ navbar:
     - text: "Slides"
       menu:
         - text: "Introduction"
-          href: 000-tidyverse-introduction.html
+          href: slides/000-tidyverse-introduction.html
         - text: "Part 1 - Tidy data wrangling"
-          href: 001-tidy-wrangling.html
+          href: slides/001-tidy-wrangling.html
         - text: "Part 2 - Tidy data summaries"
-          href: 002-tidy-summaries.html
+          href: slides/002-tidy-summaries.html
         - text: "Conclusion"
-          href: 003-tidyverse-conclusion.html
+          href: slides/003-tidyverse-conclusion.html
     - text: "Demonstrations"
       menu:
         - text: "Part 1 - Tidy data wrangling"
-          href: 001-tidy-wrangling-demo.html
+          href: slides/001-tidy-wrangling-demo.html
         - text: "Part 2 - Tidy data summaries"
-          href: 002-tidy-summaries-demo.html
+          href: slides/002-tidy-summaries-demo.html
 
 output: distill::distill_article

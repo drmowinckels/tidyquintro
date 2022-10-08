@@ -65,6 +65,7 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
+          remotes::install_cran("rmarkdown")
         shell: Rscript {0}
 
       - name: Check
@@ -72,6 +73,26 @@ jobs:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
+
+      - name: Render site
+        shell: Rscript {0}
+        run: |
+          files <- list.files("docs", "Rmd", full.names = TRUE, recursive =  TRUE)
+          k     <- lapply(files, rmarkdown::render)
+
+      - name: Render tutorials
+        shell: Rscript {0}
+        run: |
+          files <- list.files("inst", "Rmd", full.names = TRUE, recursive =  TRUE)
+          k     <- lapply(files, rmarkdown::render)
+
+      - name: Commit results
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git commit docs -m 'Re-build site' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+
 
       - name: Upload check results
         if: failure()

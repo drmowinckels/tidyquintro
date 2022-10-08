@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Tidy data wrangling</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Athanasia Monika Mowinckel" />
+    <script src="libs/header-attrs-2.16/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="lcbc-uio.css" type="text/css" />
+    <link rel="stylesheet" href="lcbc-uio-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: middle, right, title-slide
+
+.title[
+# Tidy data wrangling
+]
+.subtitle[
+## demonstration
+]
+.author[
+### Athanasia Monika Mowinckel
+]
+
+---
+
+
+
+layout: true
+    
+&lt;div class="my-sidebar"&gt;&lt;/div&gt; 
+
+---
+name: ggplot2
+
+
+class: dark, middle, center
+
+# ggplot2
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           fill = species)) +
+* geom_histogram(alpha = .9,
+*                colour = "white")
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot5-rend-1.png)&lt;!-- --&gt;
+]
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           fill = species)) +
+* geom_histogram(alpha = .8,
+                 colour = "white") +
+* scale_fill_viridis_d()
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot4-rend-1.png)&lt;!-- --&gt;
+]
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           fill = species)) +
+  geom_histogram(alpha = .8,
+                 colour = "white",
+*                position = "dodge") +
+  scale_fill_viridis_d()
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot6-rend-1.png)&lt;!-- --&gt;
+]
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           fill = species)) +
+  geom_density(
+*   alpha = .8,
+    colour = "white",
+    position = "dodge") +
+  scale_fill_viridis_d()
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot7-rend-1.png)&lt;!-- --&gt;
+]
+
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+*      aes(y = bill_length_mm,
+           fill = species)) +
+  geom_density(
+    alpha = .8, 
+    colour = "white",
+    position = "dodge") +
+  scale_fill_viridis_d()
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot8-rend-1.png)&lt;!-- --&gt;
+]
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+       aes(y = bill_length_mm,
+           x = bill_depth_mm, 
+*          colour = species)) +
+* geom_point() +
+* scale_colour_viridis_d()
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot9-rend-1.png)&lt;!-- --&gt;
+]
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+       aes(y = bill_length_mm,
+           x = bill_depth_mm, 
+           colour = species)) +  
+  geom_point() + 
+* geom_line() +
+  scale_colour_viridis_d()
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot10-rend-1.png)&lt;!-- --&gt;
+]
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+       aes(y = bill_length_mm,
+           x = bill_depth_mm, 
+           colour = species)) +  
+  geom_point() + 
+* geom_smooth(method = "lm") +
+  scale_colour_viridis_d()
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot11-rend-1.png)&lt;!-- --&gt;
+]
+
+---
+
+.pull-left[
+
+```r
+ggplot(penguins,
+       aes(y = bill_length_mm,
+           x = bill_depth_mm)) +  
+  geom_point(aes(colour = species)) + 
+  geom_smooth(aes(colour = species),
+*             method = "lm") +
+* geom_smooth(method = "lm") +
+  scale_colour_viridis_d()
+```
+]
+
+.pull-right[
+![](001-tidy-wrangling-demo_files/figure-html/penguin-plot12-rend-1.png)&lt;!-- --&gt;
+]
+
+---
+class: dark, middle, center
+name: filter
+
+# filter
+
+---
+
+
+```r
+filter(penguins, species == "Chinstrap")
+```
+
+```
+## # A tibble: 68 × 8
+##    species   island bill_lengt…¹ bill_…² flipp…³
+##    &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Chinstrap Dream          46.5    17.9     192
+##  2 Chinstrap Dream          50      19.5     196
+##  3 Chinstrap Dream          51.3    19.2     193
+##  4 Chinstrap Dream          45.4    18.7     188
+##  5 Chinstrap Dream          52.7    19.8     197
+##  6 Chinstrap Dream          45.2    17.8     198
+##  7 Chinstrap Dream          46.1    18.2     178
+##  8 Chinstrap Dream          51.3    18.2     197
+##  9 Chinstrap Dream          46      18.9     195
+## 10 Chinstrap Dream          51.3    19.9     198
+## # … with 58 more rows, 3 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   and abbreviated variable names
+## #   ¹​bill_length_mm, ²​bill_depth_mm,
+## #   ³​flipper_length_mm
+```
+
+
+---
+
+
+```r
+filter(penguins, island == "Dream")
+```
+
+```
+## # A tibble: 124 × 8
+##    species island bill_length_mm bill_…¹ flipp…²
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Adelie  Dream            39.5    16.7     178
+##  2 Adelie  Dream            37.2    18.1     178
+##  3 Adelie  Dream            39.5    17.8     188
+##  4 Adelie  Dream            40.9    18.9     184
+##  5 Adelie  Dream            36.4    17       195
+##  6 Adelie  Dream            39.2    21.1     196
+##  7 Adelie  Dream            38.8    20       190
+##  8 Adelie  Dream            42.2    18.5     180
+##  9 Adelie  Dream            37.6    19.3     181
+## 10 Adelie  Dream            39.8    19.1     184
+## # … with 114 more rows, 3 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   and abbreviated variable names
+## #   ¹​bill_depth_mm, ²​flipper_length_mm
+```
+
+---
+
+
+```r
+filter(penguins, bill_length_mm &gt; 40)
+```
+
+```
+## # A tibble: 242 × 8
+##    species island    bill_leng…¹ bill_…² flipp…³
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Adelie  Torgersen        40.3    18       195
+##  2 Adelie  Torgersen        42      20.2     190
+##  3 Adelie  Torgersen        41.1    17.6     182
+##  4 Adelie  Torgersen        42.5    20.7     197
+##  5 Adelie  Torgersen        46      21.5     194
+##  6 Adelie  Biscoe           40.6    18.6     183
+##  7 Adelie  Biscoe           40.5    17.9     187
+##  8 Adelie  Biscoe           40.5    18.9     180
+##  9 Adelie  Dream            40.9    18.9     184
+## 10 Adelie  Dream            42.2    18.5     180
+## # … with 232 more rows, 3 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   and abbreviated variable names
+## #   ¹​bill_length_mm, ²​bill_depth_mm,
+## #   ³​flipper_length_mm
+```
+
+
+---
+
+
+```r
+filter(penguins, bill_length_mm &gt; 40, species == "Chinstrap")
+```
+
+```
+## # A tibble: 68 × 8
+##    species   island bill_lengt…¹ bill_…² flipp…³
+##    &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Chinstrap Dream          46.5    17.9     192
+##  2 Chinstrap Dream          50      19.5     196
+##  3 Chinstrap Dream          51.3    19.2     193
+##  4 Chinstrap Dream          45.4    18.7     188
+##  5 Chinstrap Dream          52.7    19.8     197
+##  6 Chinstrap Dream          45.2    17.8     198
+##  7 Chinstrap Dream          46.1    18.2     178
+##  8 Chinstrap Dream          51.3    18.2     197
+##  9 Chinstrap Dream          46      18.9     195
+## 10 Chinstrap Dream          51.3    19.9     198
+## # … with 58 more rows, 3 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   and abbreviated variable names
+## #   ¹​bill_length_mm, ²​bill_depth_mm,
+## #   ³​flipper_length_mm
+```
+
+---
+class: dark, middle, center
+name: select
+
+# select
+
+---
+
+
+```r
+select(penguins, 1, 4, 6)
+```
+
+```
+## # A tibble: 344 × 3
+##    species bill_depth_mm body_mass_g
+##    &lt;fct&gt;           &lt;dbl&gt;       &lt;int&gt;
+##  1 Adelie           18.7        3750
+##  2 Adelie           17.4        3800
+##  3 Adelie           18          3250
+##  4 Adelie           NA            NA
+##  5 Adelie           19.3        3450
+##  6 Adelie           20.6        3650
+##  7 Adelie           17.8        3625
+##  8 Adelie           19.6        4675
+##  9 Adelie           18.1        3475
+## 10 Adelie           20.2        4250
+## # … with 334 more rows
+```
+
+---
+
+
+```r
+select(penguins, species, island, year, bill_length_mm)
+```
+
+```
+## # A tibble: 344 × 4
+##    species island     year bill_length_mm
+##    &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;          &lt;dbl&gt;
+##  1 Adelie  Torgersen  2007           39.1
+##  2 Adelie  Torgersen  2007           39.5
+##  3 Adelie  Torgersen  2007           40.3
+##  4 Adelie  Torgersen  2007           NA  
+##  5 Adelie  Torgersen  2007           36.7
+##  6 Adelie  Torgersen  2007           39.3
+##  7 Adelie  Torgersen  2007           38.9
+##  8 Adelie  Torgersen  2007           39.2
+##  9 Adelie  Torgersen  2007           34.1
+## 10 Adelie  Torgersen  2007           42  
+## # … with 334 more rows
+```
+
+---
+
+
+```r
+select(penguins, species, island, year, starts_with("bill"))
+```
+
+```
+## # A tibble: 344 × 5
+##    species island     year bill_length…¹ bill_…²
+##    &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Adelie  Torgersen  2007          39.1    18.7
+##  2 Adelie  Torgersen  2007          39.5    17.4
+##  3 Adelie  Torgersen  2007          40.3    18  
+##  4 Adelie  Torgersen  2007          NA      NA  
+##  5 Adelie  Torgersen  2007          36.7    19.3
+##  6 Adelie  Torgersen  2007          39.3    20.6
+##  7 Adelie  Torgersen  2007          38.9    17.8
+##  8 Adelie  Torgersen  2007          39.2    19.6
+##  9 Adelie  Torgersen  2007          34.1    18.1
+## 10 Adelie  Torgersen  2007          42      20.2
+## # … with 334 more rows, and abbreviated
+## #   variable names ¹​bill_length_mm,
+## #   ²​bill_depth_mm
+```
+
+---
+
+
+```r
+select(penguins, species, island, body_mass_g:year, ends_with("mm"))
+```
+
+```
+## # A tibble: 344 × 8
+##    species island    body_…¹ sex    year bill_…²
+##    &lt;fct&gt;   &lt;fct&gt;       &lt;int&gt; &lt;fct&gt; &lt;int&gt;   &lt;dbl&gt;
+##  1 Adelie  Torgersen    3750 male   2007    39.1
+##  2 Adelie  Torgersen    3800 fema…  2007    39.5
+##  3 Adelie  Torgersen    3250 fema…  2007    40.3
+##  4 Adelie  Torgersen      NA &lt;NA&gt;   2007    NA  
+##  5 Adelie  Torgersen    3450 fema…  2007    36.7
+##  6 Adelie  Torgersen    3650 male   2007    39.3
+##  7 Adelie  Torgersen    3625 fema…  2007    38.9
+##  8 Adelie  Torgersen    4675 male   2007    39.2
+##  9 Adelie  Torgersen    3475 &lt;NA&gt;   2007    34.1
+## 10 Adelie  Torgersen    4250 &lt;NA&gt;   2007    42  
+## # … with 334 more rows, 2 more variables:
+## #   bill_depth_mm &lt;dbl&gt;,
+## #   flipper_length_mm &lt;int&gt;, and abbreviated
+## #   variable names ¹​body_mass_g,
+## #   ²​bill_length_mm
+```
+
+---
+
+
+```r
+select(penguins, species, ends_with("mm"))
+```
+
+```
+## # A tibble: 344 × 4
+##    species bill_length_mm bill_depth_mm flippe…¹
+##    &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;    &lt;int&gt;
+##  1 Adelie            39.1          18.7      181
+##  2 Adelie            39.5          17.4      186
+##  3 Adelie            40.3          18        195
+##  4 Adelie            NA            NA         NA
+##  5 Adelie            36.7          19.3      193
+##  6 Adelie            39.3          20.6      190
+##  7 Adelie            38.9          17.8      181
+##  8 Adelie            39.2          19.6      195
+##  9 Adelie            34.1          18.1      193
+## 10 Adelie            42            20.2      190
+## # … with 334 more rows, and abbreviated
+## #   variable name ¹​flipper_length_mm
+```
+
+---
+
+
+```r
+select(penguins, is.numeric)
+```
+
+```
+## # A tibble: 344 × 5
+##    bill_length_mm bill_d…¹ flipp…² body_…³  year
+##             &lt;dbl&gt;    &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;
+##  1           39.1     18.7     181    3750  2007
+##  2           39.5     17.4     186    3800  2007
+##  3           40.3     18       195    3250  2007
+##  4           NA       NA        NA      NA  2007
+##  5           36.7     19.3     193    3450  2007
+##  6           39.3     20.6     190    3650  2007
+##  7           38.9     17.8     181    3625  2007
+##  8           39.2     19.6     195    4675  2007
+##  9           34.1     18.1     193    3475  2007
+## 10           42       20.2     190    4250  2007
+## # … with 334 more rows, and abbreviated
+## #   variable names ¹​bill_depth_mm,
+## #   ²​flipper_length_mm, ³​body_mass_g
+```
+
+---
+
+
+```r
+select(penguins, !is.numeric)
+```
+
+```
+## # A tibble: 344 × 3
+##    species island    sex   
+##    &lt;fct&gt;   &lt;fct&gt;     &lt;fct&gt; 
+##  1 Adelie  Torgersen male  
+##  2 Adelie  Torgersen female
+##  3 Adelie  Torgersen female
+##  4 Adelie  Torgersen &lt;NA&gt;  
+##  5 Adelie  Torgersen female
+##  6 Adelie  Torgersen male  
+##  7 Adelie  Torgersen female
+##  8 Adelie  Torgersen male  
+##  9 Adelie  Torgersen &lt;NA&gt;  
+## 10 Adelie  Torgersen &lt;NA&gt;  
+## # … with 334 more rows
+```
+
+---
+class: inverse, middle, center
+name: pipe
+
+# pipe
+
+---
+
+
+```r
+penguins
+```
+
+```
+## # A tibble: 344 × 8
+##    species island    bill_leng…¹ bill_…² flipp…³
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Adelie  Torgersen        39.1    18.7     181
+##  2 Adelie  Torgersen        39.5    17.4     186
+##  3 Adelie  Torgersen        40.3    18       195
+##  4 Adelie  Torgersen        NA      NA        NA
+##  5 Adelie  Torgersen        36.7    19.3     193
+##  6 Adelie  Torgersen        39.3    20.6     190
+##  7 Adelie  Torgersen        38.9    17.8     181
+##  8 Adelie  Torgersen        39.2    19.6     195
+##  9 Adelie  Torgersen        34.1    18.1     193
+## 10 Adelie  Torgersen        42      20.2     190
+## # … with 334 more rows, 3 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   and abbreviated variable names
+## #   ¹​bill_length_mm, ²​bill_depth_mm,
+## #   ³​flipper_length_mm
+```
+
+
+---
+
+
+```r
+mutate(penguins, extra_col = 1)
+```
+
+same as:
+
+
+```r
+penguins |&gt; 
+  mutate(extra_col = 1)
+```
+
+```
+## # A tibble: 344 × 9
+##    species island    bill_leng…¹ bill_…² flipp…³
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Adelie  Torgersen        39.1    18.7     181
+##  2 Adelie  Torgersen        39.5    17.4     186
+##  3 Adelie  Torgersen        40.3    18       195
+##  4 Adelie  Torgersen        NA      NA        NA
+##  5 Adelie  Torgersen        36.7    19.3     193
+##  6 Adelie  Torgersen        39.3    20.6     190
+##  7 Adelie  Torgersen        38.9    17.8     181
+##  8 Adelie  Torgersen        39.2    19.6     195
+##  9 Adelie  Torgersen        34.1    18.1     193
+## 10 Adelie  Torgersen        42      20.2     190
+## # … with 334 more rows, 4 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   extra_col &lt;dbl&gt;, and abbreviated variable
+## #   names ¹​bill_length_mm, ²​bill_depth_mm,
+## #   ³​flipper_length_mm
+```
+
+---
+
+
+```r
+penguins |&gt; 
+  select(1:2, contains("bill")) |&gt; 
+  mutate(extra_col = 1) 
+```
+
+```
+## # A tibble: 344 × 5
+##    species island    bill_leng…¹ bill_…² extra…³
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Adelie  Torgersen        39.1    18.7       1
+##  2 Adelie  Torgersen        39.5    17.4       1
+##  3 Adelie  Torgersen        40.3    18         1
+##  4 Adelie  Torgersen        NA      NA         1
+##  5 Adelie  Torgersen        36.7    19.3       1
+##  6 Adelie  Torgersen        39.3    20.6       1
+##  7 Adelie  Torgersen        38.9    17.8       1
+##  8 Adelie  Torgersen        39.2    19.6       1
+##  9 Adelie  Torgersen        34.1    18.1       1
+## 10 Adelie  Torgersen        42      20.2       1
+## # … with 334 more rows, and abbreviated
+## #   variable names ¹​bill_length_mm,
+## #   ²​bill_depth_mm, ³​extra_col
+```
+
+---
+
+
+```r
+penguins |&gt; 
+  select(1:2, contains("bill")) |&gt; 
+  mutate(extra_col = 1) |&gt; 
+  filter(sex == "female")
+```
+
+
+---
+class: inverse, middle, center
+name: mutate
+
+# mutate
+
+---
+
+
+```r
+penguins |&gt; 
+  mutate( 
+    new_column = 1,
+    bill_ld_ratio = bill_length_mm/bill_depth_mm
+    )
+```
+
+```
+## # A tibble: 344 × 10
+##    species island    bill_leng…¹ bill_…² flipp…³
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Adelie  Torgersen        39.1    18.7     181
+##  2 Adelie  Torgersen        39.5    17.4     186
+##  3 Adelie  Torgersen        40.3    18       195
+##  4 Adelie  Torgersen        NA      NA        NA
+##  5 Adelie  Torgersen        36.7    19.3     193
+##  6 Adelie  Torgersen        39.3    20.6     190
+##  7 Adelie  Torgersen        38.9    17.8     181
+##  8 Adelie  Torgersen        39.2    19.6     195
+##  9 Adelie  Torgersen        34.1    18.1     193
+## 10 Adelie  Torgersen        42      20.2     190
+## # … with 334 more rows, 5 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   new_column &lt;dbl&gt;, bill_ld_ratio &lt;dbl&gt;, and
+## #   abbreviated variable names ¹​bill_length_mm,
+## #   ²​bill_depth_mm, ³​flipper_length_mm
+```
+
+---
+
+
+```r
+penguins |&gt; 
+  group_by(species) |&gt; 
+  mutate(
+    bill_length_sp_max = max(bill_length_mm, na.rm = TRUE),
+    bill_length_pc = (bill_length_mm/bill_length_sp_max)*100
+    )
+```
+
+```
+## # A tibble: 344 × 10
+## # Groups:   species [3]
+##    species island    bill_leng…¹ bill_…² flipp…³
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+##  1 Adelie  Torgersen        39.1    18.7     181
+##  2 Adelie  Torgersen        39.5    17.4     186
+##  3 Adelie  Torgersen        40.3    18       195
+##  4 Adelie  Torgersen        NA      NA        NA
+##  5 Adelie  Torgersen        36.7    19.3     193
+##  6 Adelie  Torgersen        39.3    20.6     190
+##  7 Adelie  Torgersen        38.9    17.8     181
+##  8 Adelie  Torgersen        39.2    19.6     195
+##  9 Adelie  Torgersen        34.1    18.1     193
+## 10 Adelie  Torgersen        42      20.2     190
+## # … with 334 more rows, 5 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   bill_length_sp_max &lt;dbl&gt;,
+## #   bill_length_pc &lt;dbl&gt;, and abbreviated
+## #   variable names ¹​bill_length_mm,
+## #   ²​bill_depth_mm, ³​flipper_length_mm
+```
+
+
+---
+
+
+```r
+penguins |&gt; 
+  mutate(across(ends_with("mm"), 
+                ~ .x/10))
+```
+
+```
+## # A tibble: 344 × 8
+##    species island    bill_leng…¹ bill_…² flipp…³
+##    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Adelie  Torgersen        3.91    1.87    18.1
+##  2 Adelie  Torgersen        3.95    1.74    18.6
+##  3 Adelie  Torgersen        4.03    1.8     19.5
+##  4 Adelie  Torgersen       NA      NA       NA  
+##  5 Adelie  Torgersen        3.67    1.93    19.3
+##  6 Adelie  Torgersen        3.93    2.06    19  
+##  7 Adelie  Torgersen        3.89    1.78    18.1
+##  8 Adelie  Torgersen        3.92    1.96    19.5
+##  9 Adelie  Torgersen        3.41    1.81    19.3
+## 10 Adelie  Torgersen        4.2     2.02    19  
+## # … with 334 more rows, 3 more variables:
+## #   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;,
+## #   and abbreviated variable names
+## #   ¹​bill_length_mm, ²​bill_depth_mm,
+## #   ³​flipper_length_mm
+```
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

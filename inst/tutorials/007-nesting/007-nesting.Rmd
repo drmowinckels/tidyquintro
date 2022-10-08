@@ -31,14 +31,14 @@ Nesting data based on a grouping variable is a common way to prepare running fun
 Start by grouping the data, then nesting it. Use the grouping variables species and island.
 
 ```{r nest_1, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
-  group_by(_, _) %>% 
+penguins |> 
+  group_by(_, _) |> 
   nest()
 ```
 
 ```{r nest_1-solution}
-penguins %>% 
-  group_by(species, island) %>% 
+penguins |> 
+  group_by(species, island) |> 
   nest()
 ```
 
@@ -60,12 +60,12 @@ Alter the function used below to nest directly rather than only group.
 
 
 ```{r nest_2, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   group_by(species, island)
 ```
 
 ```{r nest_2-solution}
-penguins %>% 
+penguins |> 
   nest_by(species, island)
 ```
 
@@ -87,12 +87,12 @@ You can alter the name of the nested column using the `.key` argument.
 Try calling the nested data column "measurements" in stead. 
 
 ```{r nest_3, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
+penguins |> 
   nest_by(species, island, .key = "_")
 ```
 
 ```{r nest_3-solution}
-penguins %>% 
+penguins |> 
   nest_by(species, island, .key = "measurements")
 ```
 
@@ -117,14 +117,14 @@ This is very useful when running analyses, or even making ggplots!
 Try running a model predicting `body_mass_g` by sex grouped by species and island, and place the output in a column names `lm`
 
 ```{r nest_4, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
-  nest_by(species, island) %>% 
+penguins |> 
+  nest_by(species, island) |> 
   mutate(_ = list(lm(_ ~ _, data = _)))
 ```
 
 ```{r nest_4-solution}
-penguins %>% 
-  nest_by(species, island) %>% 
+penguins |> 
+  nest_by(species, island) |> 
   mutate(lm = list(lm(body_mass_g ~ sex, data = data)))
 ```
 
@@ -151,18 +151,18 @@ Run the same model, and use `broom::tidy` to extract the summary table from the 
 Then unnest the data based on the `tables` column.
 
 ```{r nest_g1, exercise = TRUE, exercise.lines = 7}
-penguins %>% 
-  nest_by(species, island) %>% 
+penguins |> 
+  nest_by(species, island) |> 
   mutate(lm = list(lm(_ ~ _, data = _)),
-         tables = list(broom::tidy(_))) %>% 
+         tables = list(broom::tidy(_))) |> 
   unnest(_)
 ```
 
 ```{r nest_g1-solution}
-penguins %>% 
-  nest_by(species, island) %>% 
+penguins |> 
+  nest_by(species, island) |> 
   mutate(lm = list(lm(body_mass_g ~ sex, data = data)),
-         tables = list(broom::tidy(lm))) %>% 
+         tables = list(broom::tidy(lm))) |> 
   unnest(tables)
 ```
 
@@ -184,10 +184,10 @@ Adapt the code below and just try different things.
 See what happens, look at the possible errors etc.
 
 ```{r nest_g5, exercise = TRUE, exercise.lines = 8}
-penguins %>% 
-  nest_by(species, island) %>% 
+penguins |> 
+  nest_by(species, island) |> 
   mutate(lm = list(lm(body_mass_g ~ sex, data = data)),
-         tables = list(broom::tidy(lm))) %>% 
+         tables = list(broom::tidy(lm))) |> 
   unnest(tables)
 ```
 

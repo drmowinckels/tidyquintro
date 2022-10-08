@@ -1,0 +1,25 @@
+{
+  "articles": [
+    {
+      "path": "index.html",
+      "title": "Tidyquintro course website",
+      "description": "A 4 hour workshop with quick introduction to [tidyverse](https://www.tidyverse.org/).\n",
+      "author": [
+        {
+          "name": "Athanasia Monika Mowinckel",
+          "url": {}
+        }
+      ],
+      "contents": "\nTimeline\nAll parts (except first intro) come with small exercises and breaks between.\nIntroduction to tidyverse concepts (15 minutes)\nTidy data wrangling - with translations to base-R (~ 2 hours)\nplotting data with ggplot2 (~25 min)\nsub-setting data with dplyr (~25 min)\nchaining commands with the pipe %>% (~10 min)\nadding and altering variables with dplyr (~25 min)\n\nLunch break (30 min)\nTidy data reshaping & summaries - avoiding loops (~ 1.5 hours)\npivoting data with tidyr (~25 min)\ngrouped summaries with dplyr (~25 min)\nworking with nested data using purrr (~25 min)\n\n",
+      "last_modified": "2020-10-02T17:04:33+02:00"
+    },
+    {
+      "path": "prep.html",
+      "title": "Workshop preparations",
+      "author": [],
+      "contents": "\n\n\n\n\n\n\n\n\nTidyquintro course website\n\n\nHome\nWorkshop preparations\n\n\nSlides\n \n▾\n\n\nIntroduction\nPart 1 - Tidy data wrangling\nPart 2 - Tidy data summaries\nConclusion\n\n\n\n\nDemonstrations\n \n▾\n\n\nPart 1 - Tidy data wrangling\nPart 2 - Tidy data summaries\n\n\n☰\n\n\n  \n    \n      \n        \n        \n        \n      \n      \n    \n    \n      \n  Home\n\n\n  Workshop preparations\n\n\n  \n    Slides\n     \n    \n  \n  \n      Introduction\n    \n    \n      Part 1 - Tidy data wrangling\n    \n    \n      Part 2 - Tidy data summaries\n    \n    \n      Conclusion\n    \n  \n\n  \n    Demonstrations\n     \n    \n  \n  \n      Part 1 - Tidy data wrangling\n    \n    \n      Part 2 - Tidy data summaries\n    \n  \n      \n  \n\n\n\n\n\n\nWorkshop preparations\n\n\n\n\n\nRecommended setup\nThis workshop is a combination of presentation, live coding and\nexercises. If you are attending it as a webinar, having a dual monitor\nset-up is recommended. This would enable you to follow the live coding,\nby also typing in the commands and experience the effects you self.\nProgramming is a skill where you learn best by doing.\nThat being said, as there are also exercises you can also follow\nusing a single monitor.\n\n\nInstall R\nMake sure to have R installed on your computer. It is recommended\nthat you have a newer version of R installed, with minimum version of\n4.1.0. Download R from the\nR-project\n\nWindows computers\nThe tidyverse packages require rtools to be\ninstalled. Make sure to have the required version installed before\nproceeding.\n\n\n\nInstall RStudio\nThe best experience with the workshop is to have an RStudio newer\nthan 1.3. It is not necessary, but highly recommended.\nRStudio\ndownloads page\n\n\nInstall course materials\nThis package contains materials that are necessary for the\nworkshop.\nYou can install tidyquintro from my r-universe, which will\nalso install the packages that the tutorial will cover, with\n# Enable repository from drmowinckels\noptions(repos = c(\n  drmowinckels = 'https://drmowinckels.r-universe.dev',\n  CRAN = 'https://cloud.r-project.org'))\n  \n# Download and install tidyquintro in R\ninstall.packages('tidyquintro')\n\nLoading the package\nLoading the package will also load the necessary libraries\ndirectly\nlibrary(tidyquintro)\nAdditionally, there are exercises connected to each of the topics\nwhich will also be accessible via the learnr-package.\nlearnr::available_tutorials(\"tidyquintro\")\n## Available tutorials:\n## * tidyquintro\n##   - 001-plotting    : \"Plotting data\"\n##   - 002-subsetting  : \"Subsetting data\"\n##   - 003-chaining    : \"Chaining data - the pipe\"\n##   - 004-mutating    : \"Altering or adding variables to data sets\"\n##   - 005-pivoting    : \"Pivoting data - long and wide formats\"\n##   - 006-summarising : \"Summarising data\"\n##   - 007-nesting     : \"Working with nested data sets\"\n\nIf install fails\nIf the above install fails, you can try installing everything\nindividually and then the package from source. Start by installing the\ndependent packages for the course:\ninstall.packages(c(\"tidyverse\", \"palmerpenguins\", \"learnr\", \"remotes\"))\nremotes::install_github(\"rstudio-education/gradethis\")\nWhen these are successful, you should be able to install the course\npackage.\nIf you are still struggling to install the package, please create a ticket\npasting the command and output you get so I can help you get it\nsorted.\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "last_modified": "2022-10-08T17:39:03+02:00"
+    }
+  ],
+  "collections": []
+}

@@ -24,7 +24,7 @@ All parts (except first intro) come with small exercises and breaks between.
 - **Tidy data wrangling** - with translations to base-R (~ 2 hours) 
   - plotting data with [ggplot2](https://ggplot2.tidyverse.org/) (~25 min) 
   - sub-setting data with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
-  - chaining commands with the pipe `%>%` (~10 min)  
+  - chaining commands with the pipe `|>` (~10 min)  
   - adding and altering variables with [dplyr](https://dplyr.tidyverse.org/)  (~25 min)  
 
 - **Lunch break** (30 min)  
@@ -34,3 +34,12 @@ All parts (except first intro) come with small exercises and breaks between.
   - grouped summaries with [dplyr](https://dplyr.tidyverse.org/) (~25 min)  
   - working with nested data using [purrr](https://purrr.tidyverse.org/) (~25 min) 
   
+
+## Who is this course intended for?
+
+Amy is a third year psychology student preparing to work on her Bachelor's thesis.
+At university she was taught to use a point and click analysis software (SPSS), but was recommended by her supervisor to learn R to create a more transparent and flexible way of working.
+She needs to use R in managing and analysing the data for her Bachelor's thesis, and has never worked with actual data (as opposed to curated class data for teaching purposes).
+Amy feels a little intimidated by the command-line and scripting nature of R, but is eager to learn something new.
+She hopes that the skills she learns will also make her a more attractive job applicant once her studies are over. 
+Amy benefits from a teaching style that is hands-on and descriptive, with ample opportunity to ask for clarifications interactively.

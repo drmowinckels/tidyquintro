@@ -18,7 +18,6 @@ library(tidyquintro)
 
 <!-- badges: start -->
 [![R build status](https://github.com/Athanasiamo/tidyquintro/workflows/R-CMD-check/badge.svg)](https://github.com/Athanasiamo/tidyquintro/actions)
-[![Travis build status](https://travis-ci.com/Athanasiamo/tidyquintro.svg?branch=master)](https://travis-ci.com/Athanasiamo/tidyquintro)
 <!-- badges: end -->
 
 A 4 hour workshop with quick introduction to [tidyverse](https://www.tidyverse.org/).

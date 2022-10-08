@@ -17,7 +17,7 @@ That being said, as there are also exercises you can also follow using a single 
 
 ## Install R
 Make sure to have R installed on your computer.
-It is recommended that you have a newer version of R installed, preferably higher than 4.0.0, but at minimum higher than 3.5.3.
+It is recommended that you have a newer version of R installed, with minimum version of 4.1.0.
 Download R from [the R-project](https://www.r-project.org/)
 
 #### Windows computers
@@ -36,31 +36,17 @@ It is not necessary, but highly recommended.
 
 This package contains materials that are necessary for the workshop. 
 
-You can install tidyquintro from [github](https://github.com/Athanasiamo/tidyquintro), which will also install the packages that the tutorial will cover, with
+You can install tidyquintro from [my r-universe](https://drmowinckels.r-universe.dev), which will also install the packages that the tutorial will cover, with
 
 ```r
-install.packages("remotes")
-remotes::install_github("Athanasiamo/tidyquintro")
+# Enable repository from drmowinckels
+options(repos = c(
+  drmowinckels = 'https://drmowinckels.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'))
+  
+# Download and install tidyquintro in R
+install.packages('tidyquintro')
 ```
-
-#### If install fails
-If the above install fails, you can try installing everything individually and then the package from source.
-Start by installing the dependent packages for the course:
-
-```r
-install.packages(c("tidyverse", "palmerpenguins", "learnr", "remotes"))
-remotes::install_github("rstudio-education/gradethis")
-``` 
-
-When these are successful, you should be able to install the course package.
-Download the newest tar-version from the [source](source/) directory, make sure you know where it has downloaded to and install with
-
-```r
-# Alter the /path/to section to the path where the downloaded file is. 
-install.packages("/path/to/tidyquintro_0.1.01.tar.gz", repos = NULL)
-```
-
-If you are still struggling to install the package, please create [a ticket](https://github.com/Athanasiamo/tidyquintro/issues) pasting the command and output you get so I can help you get it sorted.
 
 ### Loading the package
 Loading the package will also load the necessary libraries directly
@@ -73,3 +59,16 @@ Additionally, there are exercises connected to each of the topics which will als
 ```{r}
 learnr::available_tutorials("tidyquintro")
 ```
+
+#### If install fails
+If the above install fails, you can try installing everything individually and then the package from source.
+Start by installing the dependent packages for the course:
+
+```r
+install.packages(c("tidyverse", "palmerpenguins", "learnr", "remotes"))
+remotes::install_github("rstudio-education/gradethis")
+``` 
+
+When these are successful, you should be able to install the course package.
+
+If you are still struggling to install the package, please create [a ticket](https://github.com/Athanasiamo/tidyquintro/issues) pasting the command and output you get so I can help you get it sorted.
