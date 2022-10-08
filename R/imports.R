@@ -21,3 +21,9 @@ NULL
 #' @import learnr
 #' @keywords internal
 NULL
+
+#' Internal gradethis methods
+#' @name gradethis
+#' @importFrom gradethis code_feedback
+#' @keywords internal
+NULL

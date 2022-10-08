@@ -22,5 +22,6 @@ Suggests:
     usethis
 RoxygenNote: 7.2.0
 Imports: 
-    learnr
+    learnr,
+    gradethis
 Config/testthat/edition: 3
