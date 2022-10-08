@@ -1,6 +1,6 @@
 Package: tidyquintro
 Type: Package
-Title: Quick intro to Tidyverse
+Title: Quick Intro to Tidyverse
 Version: 0.1.02
 Authors@R: person("Athanasia Mo", "Mowinckel", 
                     email = "a.m.mowinckel@psykologi.uio.no", 
@@ -25,3 +25,5 @@ Imports:
     learnr,
     gradethis
 Config/testthat/edition: 3
+Remotes:
+  rstudio/gradethis
