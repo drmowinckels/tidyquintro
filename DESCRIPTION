@@ -23,6 +23,4 @@ Suggests:
 RoxygenNote: 7.2.0
 Imports: 
     learnr
-Remotes:
-    rstudio-education/gradethis
 Config/testthat/edition: 3
