@@ -66,9 +66,9 @@ Start by installing the dependent packages for the course:
 
 ```r
 install.packages(c("tidyverse", "palmerpenguins", "learnr", "remotes"))
-remotes::install_github("rstudio-education/gradethis")
+remotes::install_github("rstudio/gradethis")
 ``` 
 
 When these are successful, you should be able to install the course package.
 
-If you are still struggling to install the package, please create [a ticket](https://github.com/Athanasiamo/tidyquintro/issues) pasting the command and output you get so I can help you get it sorted.
+If you are still struggling to install the package, please create [a ticket](https://github.com/drmowinckels/tidyquintro/issues) pasting the command and output you get so I can help you get it sorted.
